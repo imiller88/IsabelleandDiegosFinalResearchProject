@@ -23,5 +23,5 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 
 bibliography:
-    - BIB_FILE_NAME.bib
-    - ANOTHER_BIB_FILE_NAME.bib
+    - Citations.bib
+
