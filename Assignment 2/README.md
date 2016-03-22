@@ -11,3 +11,4 @@ Our research question asks what are the effects of ethnic fractionalization on p
 -Gitignore.gitignore: gitignore file to tell Git which files to ignore.
 -Assignment 2 (Research proposal).Rmd: markdown file with our complete research proposal.
 -Assignment 2 (Research proposal).pdf: PDF of the markdown file containing our research proposal. 
+-Citations.bib: a bib file properly citing our references. 
