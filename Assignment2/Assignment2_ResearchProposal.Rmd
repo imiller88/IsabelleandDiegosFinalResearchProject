@@ -3,7 +3,6 @@ title: "Assignment 2: Research Proposal for Final Data Analysis"
 authors: "Diego Fernandez Fernandez and Isabelle Miller"
 date: "25 Mar 2016"
 output: pdf_document
-bibliography: Citations.bib
 ---
 
 #Theoretical Background / Literature Review
