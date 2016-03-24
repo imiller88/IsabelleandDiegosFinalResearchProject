@@ -8,7 +8,7 @@ bibliography: Citations.bib
 
 #Theoretical Background / Literature Review
 
-From 1974 to 1990, at least 30 countries made the transition to democracy. What Huntington has labelled the "third wave of democratization" (@Huntington1991)(1991, p. 12) has prompted an increasing scholarly interest in pinpointing the characteristics that makes a country truly democratic as well as what conditions need to be in place in order for a transition to democracy to be successful. 
+From 1974 to 1990, at least 30 countries made the transition to democracy. What Huntington has labelled the "third wave of democratization" [@Huntington1991, pp. 12] has prompted an increasing scholarly interest in pinpointing the characteristics that makes a country truly democratic as well as what conditions need to be in place in order for a transition to democracy to be successful. 
 
 A plethora of definitions of democracy can be found in the literature. While some of them are procedural and minimalist (Hardin 1999; Popper 1963; Przeworksi 1991; Riker 1982; Schumpeter 1950), others intend to be more comprehensive, maximalist, and "based on attributes widely understood to exist in few if any cases in the real world" (Collier and Levitsky 1996, p. 8). Those attributes include social and economic equality and broad citizen participation at all levels of the decision-making political process (Collier and Levitsky, 1996). 
 
