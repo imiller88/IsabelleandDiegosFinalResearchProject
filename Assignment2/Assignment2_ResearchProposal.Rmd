@@ -10,7 +10,7 @@ bibliography: Citations.bib
 
 From 1974 to 1990, at least 30 countries made the transition to democracy. What Huntington has labelled the "third wave of democratization" [-@Huntington1991, pp. 12] has prompted an increasing scholarly interest in pinpointing the characteristics that makes a country truly democratic as well as what conditions need to be in place in order for a transition to democracy to be successful. 
 
-A plethora of definitions of democracy can be found in the literature. While some of them are procedural and minimalist [@Hardin1999; @Popper1963; @Przeworksi1991; @Riker1982; @Schumpeter1950], others tend to be more comprehensive, maximalist, and "based on attributes widely understood to exist in few if any cases in the real world" [@CollierLevitsky1996, pp. 8]. Those attributes include social and economic equality and broad citizen participation at all levels of the decision-making political process. 
+A plethora of definitions of democracy can be found in the literature. While some of them are procedural and minimalist [@Hardin1999; @Popper1963; @Przeworski1991; @Riker1982; @Schumpeter1950], others tend to be more comprehensive, maximalist, and "based on attributes widely understood to exist in few if any cases in the real world" [@CollierLevitsky1996, pp. 8]. Those attributes include social and economic equality and broad citizen participation at all levels of the decision-making political process. 
 
 According to Przeworski, a minimalist democracy is just "a system in which parties lose elections" [-@Przeworski1991, pp. 10]. In this sense, the value of democracy itself is the peaceful transfer of power carried out through regular elections. The point made by Schumpeter coincides since he argues that "the principle of democracy then merely means that the reins of government should be handed to those who command more support than do any of the competing individuals or team" [@Schumpeter1950, pp. 269]. Similarly, Popper emphasizes the importance of elections.  "The first type [of government] consists of governments of which we can get rid without bloodshed- for example, by way of general elections; that is to say, the social institutions provide means by which the rulers may be dismissed by the ruled" [@Popper1963, pp. 124]. 
 
@@ -47,7 +47,7 @@ With regards to how we would go about operationalizing our dependent variable, m
 
 \item{Main independent variable}{ - for ethnic fractionalization, we plan to use the indicator developed in 2003 by Alesina et al. Their variable ranges from 0 to 1, 0 being the most ethnically homogeneous that a country can be and 1 diverse or fractionalized.}
 
-\item{Interaction variable}{ - for income inequality, we are intending to use the Gini coefficient, which takes values from 0 to 1, being 0 maximum equality and 1 maximum inequality. 
+\item{Interaction variable}{ - for income inequality, we are intending to use the Gini coefficient, which takes values from 0 to 1, being 0 maximum equality and 1 maximum inequality.}
 
 \item{Control variables}{ - Alesina et al.'s ethnic fractionalization indicator, GDP per capita, the independence of judiciary categorical variable developed by CIRI Human Rights Data Project, and the voice and accountability variable from the World Bank's Worldwide Governance Indicators will serve as our chosen control variables.}
 }
