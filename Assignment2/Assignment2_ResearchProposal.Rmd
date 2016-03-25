@@ -37,8 +37,6 @@ Consequently:
 Control variables that we have considered so far include the following: \itemize{
 \item{Linguistic fractionalization}{ - while linguistic identity may often overlap with ethnic identity, it also often plays a unifying role in multi-ethnic societies. This unifying role may, in turn, affect the intergroup competition and conflict that we theorize may play a negative role on political rights. However, the risk of multicollinearity will likely have to be accounted for and monitored. We also considered religious fractionalization as a similar control variable, but concluded that religious correlation to ethnicity is often much higher than linguistic correlation and therefore the probability of collinearity problems would be too high.}
 
-\item{Economic inequality}{ - economic inequality serves to exacerbate any sort of inter-societal or intergroup divisions or differences, and we suspect that with ethnicity this would be no different. Therefore, it would be important to include it among our control variables.}
-
 \item{Income per capita}{ - lack of wealth can produce general dissatisfaction and conflict among a population, and in turn also exacerbate intergroup conflict. We would also want to control for its residual effects.}
 
 \item{Judicial independence}{ - judicial independence serves, here, as a proxy for horizontal accountability, which in turn guarantees the ability of the state to keep itself in check. As a control variable, it would help control for the role of the state in the possible suppression of political rights.}
