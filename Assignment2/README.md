@@ -5,7 +5,7 @@ This Second Pair Assignment should be used as an opportunity to layout our colla
 
 #Research proposal
 Our research proposal provides a comprehensive literature review of the concept of democracy, a clearly defined research question, a list of variables that we are intending to use as well as a reflection on methodological issues.
-Our research question asks what are the effects of ethnic fractionalization on political rights. In this sense, our main hypothesis is that high ethnic fractionalization will have a significant negative impact on the preservation of political rights, when the country´s given quality of democracy is low. 
+Our research question asks what are the effects of ethnic fractionalization on political rights. In this sense, our main hypothesis is that high ethnic fractionalization will have a significant negative impact on the preservation of political rights, when the country´s income inequality is high. 
 
 #Files included in this repository
 -Gitignore.gitignore: gitignore file to tell Git which files to ignore.
