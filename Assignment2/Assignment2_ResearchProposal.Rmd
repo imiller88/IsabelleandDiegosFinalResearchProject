@@ -60,6 +60,8 @@ With regards to how we would go about operationalizing our dependent variable, m
 
 As for our methodology, we want to use a panel data model, covering 171 countries for at least the last 20 years. All the variables that we are planning to make use of can be easily accessed in the Quality of Government Standard Dataset developed by the Quality of Government Institute from Gothenburg [@QualityofGovernment2015]. Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, which is the variation experimented by one same unit across time, we are considering a fixed-effects model. However, this may still not be ideal due to the fact that we do not expect our main independent variable, ethnic fractionalization, to change much over time. In a fixed-effects model, time-invariant independent variables are likely to get eaten up by the country-specific time-invariant fixed effects. In our case, this is something that we cannot ignore since the nearly time-invariant explanatory variable is also our main independent variable. In this sense, when dealing with almost time-invariant variables and panel data, scholars have identified three potential ways forward: pooled OLS, random effects or a Hausman-Taylor formulation [@Plumper2004]. Consequently, we intend to run the different models and compare our coefficients across them. Our basic equation (from the OLS model) will be as follows:
 
+*Political Rightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + B6Voiceandaccounti*
+
 
 
 
