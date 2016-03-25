@@ -52,7 +52,7 @@ With regards to how we would go about operationalizing our dependent variable, m
 
 \item{Interaction variable}{ - for income inequality, we are intending to use the Gini coefficient, which takes values from 0 to 1, being 0 maximum equality and 1 maximum inequality.}
 
-\item{Control variables}{ - Alesina et al.'s ethnic fractionalization indicator, GDP per capita, the independence of judiciary categorical variable developed by CIRI Human Rights Data Project, and the voice and accountability variable from the World Bank's Worldwide Governance Indicators will serve as our chosen control variables.}
+\item{Control variables}{ - Alesina et al.'s linguistic fractionalization indicator, GDP per capita, the independence of judiciary categorical variable developed by CIRI Human Rights Data Project, and the voice and accountability variable from the World Bank's Worldwide Governance Indicators will serve as our chosen control variables.}
 }
 
 
