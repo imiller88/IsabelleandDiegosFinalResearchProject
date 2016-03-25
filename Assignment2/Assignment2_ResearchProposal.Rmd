@@ -42,7 +42,6 @@ Control variables that we have considered so far include the following: \itemize
 
 #Variables and methodology
 With regards to how we would go about operationalizing our dependent variable, main independent variables, and control variables, we plan to make use of the following indicators (all of which we have confirmed can be easily accessed online): \itemize{
-
 \item{Dependent variable}{ - as we have already said, according to Merkel's strict definition, political rights shall consist for the purposes of this study of the freedom of speech and opinion on the one hand, and the freedom of association, demonstration, and petition on the other hand. Since the majority of political rights variables that we have found encompass more dimensions than those (that is to say, are somewhat broader than our selected definition), we have decided to depend upon Freedom House's Freedom of the Press variable as a proxy for freedom of speech and opinion. Nevertheless, we also intend to run the second dimension, freedom of association, demonstration, and petition, as alternative dependent variable to serve as a robustness check. As a proxy for this, we shall use Freedom House's Associational and Organizational Rights variable.}
 
 \item{Main independent variable}{ - for ethnic fractionalization, we plan to use the indicator developed in 2003 by Alesina et al. Their variable ranges from 0 to 1, 0 being the most ethnically homogeneous that a country can be and 1 diverse or fractionalized.}
@@ -57,6 +56,7 @@ As for our methodology, we plan to use a panel data model, covering 171 countrie
 
 
 \newpage
-#Bibliography
+
+##Bibliography
 
 
