@@ -45,7 +45,7 @@ Control variables that we have considered so far include the following: \itemize
 }
 
 #Variables and methodology
-With regards to how we would go about operationalizing our dependent variable, main independent variables, and control variables, we plan to make use of the following indicators (all of which we have confirmed can be easily accessed online): \itemize{
+With regards to how we would go about operationalizing our dependent variable, main independent variables, and control variables, we plan to make use of the following indicators: \itemize{
 \item{Dependent variable}{ - as we have already said, according to Merkel's strict definition, political rights shall consist for the purposes of this study of the freedom of speech and opinion on the one hand, and the freedom of association, demonstration, and petition on the other hand. Since the majority of political rights variables that we have found encompass more dimensions than those (that is to say, are somewhat broader than our selected definition), we have decided to depend upon Freedom House's Freedom of the Press variable as a proxy for freedom of speech and opinion. Nevertheless, we also intend to run the second dimension, freedom of association, demonstration, and petition, as alternative dependent variable to serve as a robustness check. As a proxy for this, we shall use Freedom House's Associational and Organizational Rights variable.}
 
 \item{Main independent variable}{ - for ethnic fractionalization, we plan to use the indicator developed in 2003 by Alesina et al. Their variable ranges from 0 to 1, 0 being the most ethnically homogeneous that a country can be and 1 diverse or fractionalized.}
@@ -59,7 +59,7 @@ With regards to how we would go about operationalizing our dependent variable, m
 As for our methodology, we want to use a panel data model, covering 171 countries for at least the last 20 years. All the variables that we are planning to make use of can be easily accessed in the Quality of Government Standard Dataset developed by the Quality of Government Institute from Gothenburg [@QualityofGovernment2015]. Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, which is the variation experimented by one same unit across time, we are considering a fixed-effects model. However, this may still not be ideal due to the fact that we do not expect our main independent variable, ethnic fractionalization, to change much over time. In a fixed-effects model, time-invariant independent variables are likely to get eaten up by the country-specific time-invariant fixed effects. In our case, this is something that we cannot ignore since the nearly time-invariant explanatory variable is also our main independent variable. In this sense, when dealing with almost time-invariant variables and panel data, scholars have identified three potential ways forward: pooled OLS, random effects or a Hausman-Taylor formulation [@Plumper2004]. Consequently, we intend to run the different models and compare our coefficients across them. Our basic equation (from the pooled OLS model) will be as follows:
 \vspace{0.5cm}
 
-*PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + B6Voiceandaccounti + Errori*
+*PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + B6Voiceandaccounti +B7Linguisticfraci + Errori*
 
 
 \newpage
