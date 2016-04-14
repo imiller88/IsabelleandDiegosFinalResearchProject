@@ -60,6 +60,10 @@ gatheredest$iso2c <- countrycode(gatheredest$cname, origin = 'country.name',
 GDPccapita <- GDPcapita[-c(1:238),] #eliminating regional values
 Ginic <- Gini[-c(1:238),] #eliminating regional values 
 
+GDPccapita <- GDPccapita[order(GDPccapita$country,
+                                 GDPccapita$year), ] #order by country code before year
+Ginic <- Ginic[order(Ginic$country,
+                     Ginic$year), ]
 
 
 ####CLEAN AND RESHAPE DATASET FOR MERGE: quality of governance variables
@@ -67,4 +71,6 @@ Ginic <- Gini[-c(1:238),] #eliminating regional values
 QoGDatareduced$iso2c <- countrycode(QoGDatareduced$cname, origin = 'country.name',
                                  destination = 'iso2c', warn = TRUE) 
 #Serbia and Montenegro, Tibet, North Yemen not matched
+
+
 
