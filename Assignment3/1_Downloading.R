@@ -8,7 +8,7 @@ QoGData <- read.csv(gzfile(temp, "qog_std_ts_jan16.csv"))
 unlink (temp)
 
 #2. Subsetting (selection of years and variables)
-QoGDatareduced <- subset(QoGData, year>2001, select=c("cname", "year", "fh_aor", "fh_fotpsc", "al_ethnic", "al_language", "wef_ji"))
+QoGDatareduced <- subset(QoGData, year>2001 & year<2015, select=c("cname", "year", "fh_aor", "fh_fotpsc", "al_ethnic", "al_language", "wef_ji"))
 
 #2.Gathering WGI data
 download.file("http://databank.worldbank.org/data/download/WGI_csv.zip",
@@ -21,3 +21,5 @@ wgi_allyears <- read.table("WGI_Data.csv",
 library (WDI)
 Gini <- WDI(indicator="SI.POV.GINI")
 GDPcapita <- WDI(indicator="NY.GDP.PCAP.CD")
+GDPccapita <- GDPcapita[-c(1:238),] #eliminating regional values
+Ginic <- Gini[-c(1:238),] #eliminating regional values 
