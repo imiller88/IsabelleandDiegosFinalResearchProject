@@ -5,7 +5,7 @@ wgi <- wgi[-c(2)] #remove country code
 wgi <- data.frame(wgi)
 
 #rename columns
-library(plyr)
+library(dplyr)
 head(wgi[, 1:2])
 
 colnames(wgi)[1] <- "cname"
@@ -42,8 +42,7 @@ gatheredest <- gather(voiceandacc, year, est, 4:16)
 gatheredest <- gatheredest[-c(2,3)] #variable and variable code are redundant
 head(gatheredest)
 
-gatheredest <- rename(gatheredest,
-                      VoiceandAccountability=est)
+colnames(gatheredest)[3] <- "VoiceandAccountability"
 
 gatheredest <- gatheredest[order(gatheredest$cname,
                            gatheredest$year), ] #order by country code before year
@@ -60,13 +59,13 @@ gatheredest$iso2c <- countrycode(gatheredest$cname, origin = 'country.name',
 GDPccapita <- GDPcapita[-c(1:238),] #eliminating regional values
 colnames(GDPccapita)[3] <- "GDPpercapita"
 colnames(GDPccapita)[2] <- "cname"
-GDPccapita <- GDPccapita[order(GDPccapita$country,
+GDPccapita <- GDPccapita[order(GDPccapita$cname,
                                GDPccapita$year), ] #order by country code before year
 
 Ginic <- Gini[-c(1:238),] #eliminating regional values 
 colnames(Ginic)[3] <- "Ginicoef"
 colnames(Ginic)[2] <- "cname"
-Ginic <- Ginic[order(Ginic$country,
+Ginic <- Ginic[order(Ginic$cname,
                      Ginic$year), ]
 
 
@@ -76,9 +75,9 @@ Ginic <- Ginic[order(Ginic$country,
 #Assign iso2codes from country.name
 QoGDatareduced$iso2c <- countrycode(QoGDatareduced$cname, origin = 'country.name',
                                  destination = 'iso2c', warn = TRUE) 
-#Serbia and Montenegro, Tibet, North Yemen not matched
+#Serbia and Montenegro, Tibet not matched
 
-#rename variables
+#rename variables - make sure dplyr is loaded (but not plyr)
 QoGDatareduced <- rename  (QoGDatareduced,
                 orgassfreedom = fh_aor,
                 pressfreedom = fh_fotpsc,
