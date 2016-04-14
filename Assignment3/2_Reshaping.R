@@ -1,11 +1,11 @@
+#CLEAN DATASET
 #create new dataset omitting years 1996, 1998, 2000
 wgi <- wgi_allyears[c(1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20)] #keep columns
 wgi <- wgi[-c(2)] #remove country code
-
+wgi <- data.frame(wgi)
 
 #rename columns
 library(plyr)
-
 head(wgi[, 1:2])
 
 colnames(wgi)[1] <- "cname"
@@ -26,17 +26,21 @@ colnames(wgi)[15] <- "2013"
 colnames(wgi)[16] <- "2014"
 
 #select variable of interest (voice and accountability)
-wgi <- data.frame(wgi)
 library(dplyr)
 voiceandacc <- filter(wgi,wgi$variablecode == "VA.EST") #select out voice and accountability
 
+#RESHAPING
 # "long" format - data frame columns are variables and rows are specific observations
-
+# reshape from "wide" to "long" format using tidyr package
 library("tidyr")
 
+head(voiceandacc[,1:5])
 
+#create 2 new columns: year (key) and est (value) ; cname identifies subject - do not gather!
+#therefore gather only columns 4-16
+gatheredest <- gather(voiceandacc, year, est, 4:16)
+gatheredest <- gatheredest[-c(2,3)] #variable and variable code are redundant
+head(gatheredest)
 
-# Create ID for each observation and matching country codes
-wgi_allyears <- mutate(wgi_allyears, ID = colnames(dd))
-cc$iso2c <- countrycode(cc$wbcode, origin = "wb",destination = "iso2c", warn = TRUE)
-cc$country <- countrycode(cc$iso2c, origin = "iso2c",destination = "country.name", warn = TRUE)
+gatheredest <- rename(gatheredest,
+                      VoiceandAccountability=est)
