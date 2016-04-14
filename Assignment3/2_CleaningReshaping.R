@@ -78,5 +78,12 @@ QoGDatareduced$iso2c <- countrycode(QoGDatareduced$cname, origin = 'country.name
                                  destination = 'iso2c', warn = TRUE) 
 #Serbia and Montenegro, Tibet, North Yemen not matched
 
+#rename variables
+QoGDatareduced <- rename  (QoGDatareduced,
+                orgassfreedom = fh_aor,
+                pressfreedom = fh_fotpsc,
+                ethnicfrac = al_ethnic,
+                langfrac = al_language,
+                judindep = wef_ji)
 
 
