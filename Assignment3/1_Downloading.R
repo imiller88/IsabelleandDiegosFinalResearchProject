@@ -17,9 +17,4 @@ unzip(temp, "WGI_Data.csv")
 wgi_allyears <- read.table("WGI_Data.csv", 
                  sep=",",skip=2, header=T)
 
-#3.Gathering WDI data
-library (WDI)
-Gini <- WDI(indicator="SI.POV.GINI")
-GDPcapita <- WDI(indicator="NY.GDP.PCAP.CD")
-GDPccapita <- GDPcapita[-c(1:238),] #eliminating regional values
-Ginic <- Gini[-c(1:238),] #eliminating regional values 
+
