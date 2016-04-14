@@ -59,11 +59,13 @@ gatheredest$iso2c <- countrycode(gatheredest$cname, origin = 'country.name',
 ####CLEAN & RESHAPE DATASET FOR MERGE: GDP per capita & GINI
 GDPccapita <- GDPcapita[-c(1:238),] #eliminating regional values
 colnames(GDPccapita)[3] <- "GDPpercapita"
+colnames(GDPccapita)[2] <- "cname"
 GDPccapita <- GDPccapita[order(GDPccapita$country,
                                GDPccapita$year), ] #order by country code before year
 
 Ginic <- Gini[-c(1:238),] #eliminating regional values 
 colnames(Ginic)[3] <- "Ginicoef"
+colnames(Ginic)[2] <- "cname"
 Ginic <- Ginic[order(Ginic$country,
                      Ginic$year), ]
 
