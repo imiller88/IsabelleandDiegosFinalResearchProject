@@ -57,9 +57,6 @@ gatheredest$iso2c <- countrycode(gatheredest$cname, origin = 'country.name',
 
 
 ####CLEAN & RESHAPE DATASET FOR MERGE: GDP per capita & GINI
-library (WDI)
-Gini <- WDI(indicator="SI.POV.GINI")
-GDPcapita <- WDI(indicator="NY.GDP.PCAP.CD")
 GDPccapita <- GDPcapita[-c(1:238),] #eliminating regional values
 Ginic <- Gini[-c(1:238),] #eliminating regional values 
 

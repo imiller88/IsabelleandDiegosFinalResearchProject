@@ -19,5 +19,7 @@ wgi_allyears <- read.table("WGI_Data.csv",
 
 #3. Gathering WDI data (package)
 library (WDI)
+Gini <- WDI(indicator="SI.POV.GINI")
+GDPcapita <- WDI(indicator="NY.GDP.PCAP.CD")
 
 
