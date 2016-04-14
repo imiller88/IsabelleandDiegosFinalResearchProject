@@ -17,4 +17,7 @@ unzip(temp, "WGI_Data.csv")
 wgi_allyears <- read.table("WGI_Data.csv", 
                  sep=",",skip=2, header=T)
 
+#3. Gathering WDI data (package)
+library (WDI)
+
 
