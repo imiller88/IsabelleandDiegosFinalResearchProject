@@ -16,7 +16,7 @@ URL2 <- ""
 download.file("http://databank.worldbank.org/data/download/WGI_csv.zip",
               temp, mode="wb")
 unzip(temp, "WGI_Data.csv")
-dd <- read.table("WGI_Data.csv", 
+wgi_allyears <- read.table("WGI_Data.csv", 
                  sep=",",skip=2, header=T)
 
 
