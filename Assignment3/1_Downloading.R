@@ -11,8 +11,6 @@ unlink (temp)
 QoGDatareduced <- subset(QoGData, year>2001, select=c("cname", "year", "fh_aor", "fh_fotpsc", "al_ethnic", "wdi_gini", "al_language", "wef_ji", "wdi_gdpcur"))
 
 #2.Gathering data from World Governance Indicators
-URL2 <- ""
-
 download.file("http://databank.worldbank.org/data/download/WGI_csv.zip",
               temp, mode="wb")
 unzip(temp, "WGI_Data.csv")
