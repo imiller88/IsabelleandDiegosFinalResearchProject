@@ -1,5 +1,7 @@
+#1. Setting working directory for both computers
 getwd
-setwd("/Users/Diegotab/GitHub/IsabelleandDiegosFinalResearchProject/Assignment3")
+try(setwd("/Users/Diegotab/GitHub/IsabelleandDiegosFinalResearchProject/Assignment3"), silent = TRUE)
+try(setwd("/Users/isabellemiller/GitHub/IsabelleandDiegosFinalResearchProject/Assignment3"), silent =TRUE)
 #1. Gathering data from Quality of Government Standard Dataset 
 URL <- 'http://www.qogdata.pol.gu.se/data/qog_std_ts_jan16.csv'
 temp <- tempfile()
