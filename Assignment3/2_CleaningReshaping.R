@@ -72,6 +72,10 @@ Ginic <- Ginic[order(Ginic$cname,
 
 
 ####CLEAN AND RESHAPE DATASET FOR MERGE: quality of governance variables
+#Deleting countries that appear in the dataset but do not exist anymore, e.g.: East Germany, USSR
+QoGData <- QoGData[-c(14281:14350, 11621:11690, 13931:14000, 3221:3290, 14631:14770, 14351:14420, 14421:14490, 14071:14140, 13231:13300, 4691:4830, 11761:11970),] 
+#Countries deleted: France(-1962), Yemen South, Yemen North, Vietnam, Czechoslovaquia, Vietnam North, Vietnam South, Malaysia (-1965), Cyprus (-1974), Yugoslavia, USSR, East Germany, West Germany, Sudan
+QoGDatareduced <- subset(QoGData, year>2001 & year<2015, select=c("cname", "year", "fh_aor", "fh_fotpsc", "al_ethnic", "al_language", "wef_ji"))
 #Assign iso2codes from country.name
 QoGDatareduced$iso2c <- countrycode(QoGDatareduced$cname, origin = 'country.name',
                                  destination = 'iso2c', warn = TRUE) 
