@@ -165,5 +165,8 @@ CombinedVars2 <- CombinedVars2[!is.na(CombinedVars2$ethnicfrac), ]
 #code year as numeric
 CombinedVars2$year <- as.numeric(as.character(CombinedVars$year))
 
+#code as panel data
+CombinedVars2 <- plm.data(CombinedVars2, index=c("cname", "year"))
+
 #Create Excel sheet with final dataset
 write.csv(CombinedVars2, file="FinalDataset.csv")
