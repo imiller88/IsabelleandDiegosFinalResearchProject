@@ -143,6 +143,10 @@ write.csv(CombinedVars, file="CombinedVars.csv")
 
 ####POST-MERGE CLEANING
 
+#reorder to put dependent variables first
+CombinedVars <- CombinedVars[c("iso2c", "cname", "year", "pressfreedom", "orgassfreedom", "ethnicfrac",
+                               "Ginicoef", "GDPpercapita", "VoiceandAccountability", "langfrac", "judindep")] 
+
 #check NAs for each variable
 #drop NAs for pressfreedom and ethnicfrac
 colSums(is.na(CombinedVars)) 
