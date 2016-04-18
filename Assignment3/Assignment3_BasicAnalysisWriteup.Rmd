@@ -1,24 +1,10 @@
 ---
-<<<<<<< HEAD
 title: "Third Pair Assignment"
 author: "Diego Fernández Fernández and Isabelle Miller"
 date: "19 Apr 2016"
-=======
-title: "Assignment3_BasicAnalysisWriteup"
-author: "Diego Fernandez Fernandez and Isabelle Miller"
-date: "14 Apr 2016"
->>>>>>> origin/master
 output: pdf_document
 bibliography: Citations2.bib
 ---
-
-Variables:
-pressfreedom = press freedom from QoG (collected from Freedom House), scale of 0-100 with 0 being the highest
-
-
-
-
- You can embed an R code chunk like this:
 
 #Research Question
 Our Collaborative Research Paper aims at shedding some light on what the effects of ethnic fractionalization on political rights are. In this sense, we have two main hypothesis: 
@@ -27,7 +13,7 @@ Our Collaborative Research Paper aims at shedding some light on what the effects
 
 **H2: When income inequality is low, the impact of high ethnic fractionalization on political rights is expected to be positive.**
 
-For more information regarding the theoretical underpinnings of our research proposal, you can have a look at 
+For more information regarding the theoretical underpinnings of our research proposal, you can have a look at (https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment2/Assignment2_ResearchProposal.Rmd)
 
 ```{r}
 summary(cars)
