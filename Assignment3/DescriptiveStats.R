@@ -49,3 +49,4 @@ hist(CV2014$pressfreedom,
 
 hist(CV2005$orgassfreedom)
 
+

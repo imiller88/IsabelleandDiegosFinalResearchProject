@@ -145,9 +145,6 @@ CombinedVars <- CombinedVars[-c(651:709, 827:852, 879:917, 944:969, 977:1002, 10
                                 2644:2669, 2514:2539, 2091:2116, 2143:2155, 1993:2012, 1915:1940, 
                                 1882:1888, 1661:1686, 1563:1621, 1472:1497, 2592:2604, 2735:2747),] 
 
-#saving final version of the dataset in a csv file
-write.csv(CombinedVars, file="CombinedVars.csv")
-
 
 
 ####POST-MERGE CLEANING
@@ -164,3 +161,6 @@ colSums(is.na(CombinedVars))
 CombinedVars2 <- CombinedVars[!is.na(CombinedVars$pressfreedom), ] #omit NAs just for that variable
 #creates a new vector that omits all rows for which it is not TRUE
 CombinedVars2 <- CombinedVars2[!is.na(CombinedVars2$ethnicfrac), ]
+
+#Create Excel sheet with final dataset
+write.csv(CombinedVars2, file="FinalDataset.csv")
