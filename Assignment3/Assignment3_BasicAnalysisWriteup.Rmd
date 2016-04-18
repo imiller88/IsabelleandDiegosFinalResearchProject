@@ -1,13 +1,23 @@
 ---
-title: "Assignment3_BasicAnalysisWriteup"
+title: "Third Pair Assignment"
 author: "Diego Fernández Fernández and Isabelle Miller"
-date: "14 Apr 2016"
+date: "19 Apr 2016"
 output: pdf_document
+bibliography: Citations2.bib
 ---
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+#Research Question
+Our Collaborative Research Paper aims at shedding some light on what the effects of ethnic fractionalization on political rights are. In this sense, we have two main hypothesis: 
+
+**H1: The more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high.**
+
+**H2: When income inequality is low, the impact of high ethnic fractionalization on political rights is expected to be positive.**
+
+For more information regarding the theoretical underpinnings of our research proposal, you can have a look at 
 
 ```{r}
 summary(cars)
