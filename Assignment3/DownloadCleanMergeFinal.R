@@ -162,5 +162,8 @@ CombinedVars2 <- CombinedVars[!is.na(CombinedVars$pressfreedom), ] #omit NAs jus
 #creates a new vector that omits all rows for which it is not TRUE
 CombinedVars2 <- CombinedVars2[!is.na(CombinedVars2$ethnicfrac), ]
 
+#code year as numeric
+CombinedVars2$year <- as.numeric(as.character(CombinedVars$year))
+
 #Create Excel sheet with final dataset
 write.csv(CombinedVars2, file="FinalDataset.csv")
