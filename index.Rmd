@@ -1,1 +1,69 @@
-hello world
+---
+title: "Assignment 1 Final Output"
+output: pdf_document
+---
+
+This a summary of the descriptive statistics from Diego and Isabelle's first assignment for the Collaborative Social Science Data Analysis class.
+
+## *Table of Contents*
+#[Data Set 1: Average Yearly Temperatures in New Haven 1912-1971](#dataset1)
+#[Data Set 2: Violent Crime Rates by US State](#dataset2)
+
+\pagebreak
+
+#Data Set 1: Average Yearly Temperatures in New Haven 1912-1971
+>
+###Introduction to the DataSet
+The core R data set nhtemp, titled "Average Yearly Temperatures in New Haven" is a time series of 60 observations recording the mean annual temperature in degrees Fahrenheit in New Haven, Connecticut, between 1912 and 1971.
+
+###Descriptive Statistics
+
+If we look at the summary statistics, we learn that the average temperature has fallen within a small range for the duration of the 60 years. Otherwise, it tells us very little about the actual climate or any change in climate over time, as the temperatures are aggregated by year and not by month or season.
+```{r}
+summary(nhtemp)
+```
+
+However, if we look at the data over time, we can see a general upwards trend in the average temperatures, although they vary considerably from one year to the next.
+
+```{r, echo=FALSE}
+plot(nhtemp,
+    main="Average Yearly Temperature 1912-1971",
+    ylab="Temperature (Fahrenheit)")
+```
+
+
+\pagebreak
+
+The histogram shows us that most years cluster towards an average temperature of 50-52.
+
+```{r, echo=FALSE}
+hist(nhtemp, 
+     main="Frequency of Average Yearly Temperatures", 
+     xlab="Temperature")
+```
+
+\pagebreak
+
+#Data Set 2: Violent Crime Rates by US State
+>
+###Introduction to the DataSet
+
+The dataset USArrests contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It also provides the percent of the population living in urban areas.
+
+There are 50 observations on the 4 following variables:
+
+-Murder (murder arrests per 100,000)
+
+-Assault (assault arrests per 100,000)
+
+-UrbanPop (percent urban population per state)
+
+-Rape (rape arrests per 100,000)
+
+###Descriptive Statistics
+
+```{r, echo=FALSE}
+
+```
+
+
