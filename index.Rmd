@@ -1,6 +1,6 @@
 ---
 title: "Assignment 1 Final Output"
-output: pdf_document
+output: html_document
 ---
 
 This a summary of the descriptive statistics from Diego and Isabelle's first assignment for the Collaborative Social Science Data Analysis class.
