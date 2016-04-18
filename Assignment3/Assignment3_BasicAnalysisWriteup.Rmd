@@ -22,9 +22,9 @@ Our aim is to collect data on level of political rights, ethnic fractionalizatio
 The variables that we are collecting for this research project come from three different data sources: the [Quality of Government Standard Data](http://qog.pol.gu.se/data/datadownloads/qogstandarddata), the [World Development Indicators](http://data.worldbank.org/data-catalog/world-development-indicators) and the [Worldwide Governance Indicators](http://data.worldbank.org/data-catalog/worldwide-governance-indicators).
 
 \itemize{
-\item{Quality of Government (QoG) Standard Time-Series Data}{ - They are contained in the QoG Standard Time-Series Dataset, which includes data from 1946 to 2015, being the unit of analysis country-year (@qog2015). It compiles approximately 2500 variables, making it the largest dataset developed by the Quality of Government Institut at the University of Gothenburg, Sweden.}
-\item{World Development Indicators (WDI)}{ - They are a set of indicators developed by the World Bank, compiling "relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty". They are organized around six main themes, which are world view, people, environment, economy, states and markets, and global links (@wdi).}
-\item{Worldwide Governance Indicators (WGI)}{ - They are also developed by the World Bank. They consist of "six composite indicators of broad dimensions of governance covering over 200 countries since 1996: Voice and Accountability, Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption" (@wgi). Moreover, they are obtained from 31 different perception-based data sources, aiming at enabling meaningful cross-country comparisons over time.}
+\item{Quality of Government (QoG) Standard Time-Series Data}{ - They are contained in the QoG Standard Time-Series Dataset, which includes data from 1946 to 2015, being the unit of analysis country-year [@qog2015]. It compiles approximately 2500 variables, making it the largest dataset developed by the Quality of Government Institut at the University of Gothenburg, Sweden.}
+\item{World Development Indicators (WDI)}{ - They are a set of indicators developed by the World Bank, compiling "relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty". They are organized around six main themes, which are world view, people, environment, economy, states and markets, and global links [@wdi].}
+\item{Worldwide Governance Indicators (WGI)}{ - They are also developed by the World Bank. They consist of "six composite indicators of broad dimensions of governance covering over 200 countries since 1996: Voice and Accountability, Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption" [@wgi]. Moreover, they are obtained from 31 different perception-based data sources, aiming at enabling meaningful cross-country comparisons over time.}
 }
 
 
@@ -43,3 +43,6 @@ plot(cars)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+\newpage
+##Bibliography
