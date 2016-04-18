@@ -1,14 +1,24 @@
 ---
+<<<<<<< HEAD
 title: "Third Pair Assignment"
 author: "Diego Fernández Fernández and Isabelle Miller"
 date: "19 Apr 2016"
+=======
+title: "Assignment3_BasicAnalysisWriteup"
+author: "Diego Fernandez Fernandez and Isabelle Miller"
+date: "14 Apr 2016"
+>>>>>>> origin/master
 output: pdf_document
 bibliography: Citations2.bib
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Variables:
+pressfreedom = press freedom from QoG (collected from Freedom House), scale of 0-100 with 0 being the highest
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+
+ You can embed an R code chunk like this:
 
 #Research Question
 Our Collaborative Research Paper aims at shedding some light on what the effects of ethnic fractionalization on political rights are. In this sense, we have two main hypothesis: 
