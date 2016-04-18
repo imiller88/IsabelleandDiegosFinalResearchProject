@@ -13,7 +13,24 @@ Our Collaborative Research Paper aims at shedding some light on what the effects
 
 **H2: When income inequality is low, the impact of high ethnic fractionalization on political rights is expected to be positive.**
 
-For more information regarding the theoretical underpinnings of our research proposal, you can have a look at [https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment2/Assignment2_ResearchProposal.Rmd]
+For more information regarding the theoretical underpinnings of our research proposal, you can have a look at our second pair assignment, which can be found here: [Assignment 2](https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment2/Assignment2_ResearchProposal.Rmd)
+
+#Model
+Our aim is to collect data on level of political rights, ethnic fractionalization, as well as income inequality for all countries in the world during the period 2002-2014. In this sense, we make use of a freedom of the press indicator as proxy for political rights, our dependent variable (DV). Nevertheless, we also want to make use of an organizational and associational freedom index as an alternative DV for a robustness check. Moreover, ethnic fractionalization and income inequality are our two main independent variables (IVs) of interest. When it comes to other control variables that we want to include in our model, those are GDP per capita, judiciary independence, governmental accountability and linguistic fractionalization. Again, for more information concerning the theoretical reasons behind this model specification, have a look at [Assignment 2](https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment2/Assignment2_ResearchProposal.Rmd)
+
+#Data sources
+The variables that we are collecting for this research project come from three different data sources: the [Quality of Government Standard Data](http://qog.pol.gu.se/data/datadownloads/qogstandarddata), the [World Development Indicators](http://data.worldbank.org/data-catalog/world-development-indicators) and the [Worldwide Governance Indicators](http://data.worldbank.org/data-catalog/worldwide-governance-indicators).
+
+\itemize{
+\item{Quality of Government (QoG) Standard Time-Series Data}{ They are contained in the QoG Standard Time-Series Dataset, which includes data from 1946 to 2015, being the unit of analysis country-year (). It compiles approximately 2500 variables, making it the largest dataset developed by the Quality of Government Institut at the University of Gothenburg, Sweden.}
+\item{World Development Indicators (WDI)}{ - They are a set of indicators developed by the World Bank, compiling "relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty". They are organized around six main themes, which are world view, people, environment, economy, states and markets, and global links.() }
+\item{Worldwide Governance Indicators (WGI)}{ - They are also developed by the World Bank. They consist of "six composite indicators of broad dimensions of governance covering over 200 countries since 1996: Voice and Accountability, Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption". Moreover, they are obtained from 31 different perception-based data sources, aiming at enabling meaningful cross-country comparisons over time.()}
+}
+
+
+#Data gathering
+
+
 
 ```{r}
 summary(cars)
