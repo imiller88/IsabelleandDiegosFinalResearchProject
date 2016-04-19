@@ -22,15 +22,28 @@ Our aim is to collect data on level of political rights, ethnic fractionalizatio
 The variables that we are collecting for this research project come from three different data sources: the [Quality of Government Standard Data](http://qog.pol.gu.se/data/datadownloads/qogstandarddata), the [World Development Indicators](http://data.worldbank.org/data-catalog/world-development-indicators) and the [Worldwide Governance Indicators](http://data.worldbank.org/data-catalog/worldwide-governance-indicators).
 
 \itemize{
-\item{Quality of Government (QoG) Standard Time-Series Data}{ - They are contained in the QoG Standard Time-Series Dataset, which includes data from 1946 to 2015, being the unit of analysis country-year [@qog2015]. It compiles approximately 2500 variables, making it the largest dataset developed by the Quality of Government Institut at the University of Gothenburg, Sweden.}
-\item{World Development Indicators (WDI)}{ - They are a set of indicators developed by the World Bank, compiling "relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty". They are organized around six main themes, which are world view, people, environment, economy, states and markets, and global links [@wdi].}
-\item{Worldwide Governance Indicators (WGI)}{ - They are also developed by the World Bank. They consist of "six composite indicators of broad dimensions of governance covering over 200 countries since 1996: Voice and Accountability, Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption" [@wgi]. Moreover, they are obtained from 31 different perception-based data sources, aiming at enabling meaningful cross-country comparisons over time.}
+\item{Quality of Government (QoG) Standard Time-Series Data}{ - They are contained in the QoG Standard Time-Series Dataset, which includes data from 1946 to 2015, being the unit of analysis country-year. It compiles approximately 2500 variables, making it the largest dataset developed by the Quality of Government Institut at the University of Gothenburg, Sweden.}
+\item{World Development Indicators (WDI)}{ - They are a set of indicators developed by the World Bank, compiling "relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty". They are organized around six main themes, which are world view, people, environment, economy, states and markets, and global links.}
+\item{Worldwide Governance Indicators (WGI)}{ - They are also developed by the World Bank. They consist of "six composite indicators of broad dimensions of governance covering over 200 countries since 1996: Voice and Accountability, Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption". Moreover, they are obtained from 31 different perception-based data sources, aiming at enabling meaningful cross-country comparisons over time.}
 }
 
 
 #Data gathering
 
+##Quality of Government data 
 
+When it comes to gathering the data from the Quality of Government Standard Time-Series Dataset [@qog2015], we downloaded and imported into R the csv file containing the data. After that, we only kept the variables that are going to be included in our model for the period 2002-2014. Those are the variables for freedom of the press and associational and organization freedom, developed by Freedom House, indicators for ethnic and linguistic fractionalization [@Alesina2003], as well as the World Economic Forum (WEF)´s judicial independence variable. 
+
+##World Development Indicators 
+
+As there is a WDI Package for R, we can the use the World Bank indicator codes in order to download automatically from the World Bank´s APIs the variables that we are interested in. Those variables are two: the Gini coefficient, which meassures income inequality (World Bank code: SI.POV.GINI), as well as GDP per capita in current US dollars (World Bank code: NY.GDP.PCAP.CD) [@wdi]
+
+##Worldwide Governance Indicators 
+
+Unlike in the case of the WDI, there is no API. Therefore, we had to download and import into R the data in a csv file, contained in a zip file that we had to unzip. Since we are only interested in the Voice and Accountability variable for the years 2002-2014, we drop the other five variables (Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption)  as well as the values that the variable Voice and Accountability takes for the remaining years (1996, 1998, 2000)  [@Kaufmann2010]. 
+
+
+#Descriptive and Inferential Statistics
 
 ```{r}
 summary(cars)
