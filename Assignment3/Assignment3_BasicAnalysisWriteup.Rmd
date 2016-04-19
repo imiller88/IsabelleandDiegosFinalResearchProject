@@ -18,6 +18,7 @@ library("sp")
 library("knitr")
 library("stargazer")
 library("plm")
+library("texreg")
 opts_chunk$set(tidy.opts=list(width.cutoff=60))
 ```
 
@@ -158,10 +159,8 @@ M1 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccounta
 M2 <- plm(pressfreedom ~ ethnicfrac*Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2, model="pooling", index=c("cname", "year"))
 #Fixed effects
 M3 <- plm(pressfreedom ~ ethnicfrac*Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2, model="within", index=c("cname", "year"))
-labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "GDP per capita", "Voice and Accountability", "Judicial Independence", "Linguistic Fractionalization", ("Intercept"))
-label_DV <- c("Freedom of the press")
 
-stargazer::stargazer(M1, M2, M3, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Pooled OLS (1), Pooled OLS with interaction (2) and Fixed Effects with Interaction (3)", digits = 2, type = "latex", header = FALSE)
+texreg(list(M1, M2, M3), use.packages=FALSE, label="tab:5", single.row=TRUE)
 
 ```
 
