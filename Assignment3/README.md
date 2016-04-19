@@ -2,7 +2,9 @@
 
 gather web based data from at least two sources, merge the data sets, conduct basic descriptive and inferential statistics on the data to address a relevant research question and briefly describe the results including with dynamically generated tables and figures. Students are encouraged to access data and perform statistical analyses with an eye to answering questions relevant for their Collaborative Research Project. Deadline 19 April, the write up should be 1,500 words maximum and use literate programming, 10% of final grade.
 
-All of the code can be found in the file DownloadCleanMergeFinal.R.
+#Part I - Data Preparation
+
+All of the code can be found in the file DownloadCleanMergeFinal.R. For a description of each step and to access them separately, see the following:
 
 
 
@@ -17,3 +19,15 @@ The desired variables have been selected out of the datasets for the years 2002-
 **3. Merging**
 
 The isolated code for the merging of variables into a single dataset can be found in the file 3_Merging.R.
+
+
+#Part II: Statistics
+
+####*Descriptive Statistics*
+
+All descriptive statistics, including those not included in Assignment3_BasicAnalysisWriteup.Rmd, can be found in the file DescriptiveStats.R. 
+
+In order to reproduce the workspace used in the markdown document (workspacefinal.RData), including all of the subsets used for specific visualizations, this file must be run.
+
+
+####*Inferential Statistics*
