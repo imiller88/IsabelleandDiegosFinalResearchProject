@@ -18,7 +18,6 @@ library("sp")
 library("knitr")
 library("stargazer")
 library("plm")
-library("apsrtable")
 opts_chunk$set(tidy.opts=list(width.cutoff=60))
 ```
 
