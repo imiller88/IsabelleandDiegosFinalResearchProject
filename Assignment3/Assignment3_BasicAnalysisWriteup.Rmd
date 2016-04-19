@@ -17,6 +17,7 @@ library("ggmap")
 library("sp")
 library("knitr")
 library("stargazer")
+library("plm")
 opts_chunk$set(tidy.opts=list(width.cutoff=60))
 ```
 
@@ -145,4 +146,23 @@ mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractional
 ```
 
 \newpage
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+
+#setting data as panel data
+CombinedVars2 <- plm.data(CombinedVars2, index=c("cname", "year"))
+#linear regression with freedom of the press as DV
+M1 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2)
+summary(M1)
+#linear regression with alternative DV - freedom of association and organization
+M2 <- lm(orgassfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2)
+summary(M2)
+
+stargazer::stargazer(M1, M2, covariate.labels = NULL,
+                     title = 'OLS regressions',
+                     digits = 2, type = 'latex', header = FALSE)
+```
+
+\newpage
+
 ##Bibliography
