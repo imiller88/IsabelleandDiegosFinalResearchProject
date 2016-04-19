@@ -167,6 +167,9 @@ Although the inferential part of our analysis is just being started, we have alr
 
 On the other hand, based on our fixed-effects model, only income inequality, as measured by the Gini coefficient, and the World Bank´s voice and accountability variable appear to hold some explanatory power (statistically significant) when it comes to making sense of the differences in press freedom scores across countries and years. As in the OLS model, the effect of voice and accountability is the most prominent from a substantive standpoint (a 1-point increase in voice and accountability is expected to improve a country´s press freedom score by 12.52). Concerning our main IV, the level ethnic fractionalization, as well as the level of linguistic fractionalization variable, as they vary very little across time (they are nearly time-invariant), both of them drop out when running a fixed-effects model.
 
+##Next steps
+As we have just shown, nearly time-invariant independent variables, such as a country´s level of ethnic fractionalization, get eaten up by the country-specific time-invariant fixed effects. To deal with this, there are three potential ways forward: pooled OLS, random-effects or a Hausman-Taylor formulation. In this sense, we are planning to perform the three models and compare coefficients across them. Moreover, we are intending to include an interaction term between ethnic fractionalization and income inequality in our next regressions, which we have not done so far. 
+
 ```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
 
 #setting data as panel data
