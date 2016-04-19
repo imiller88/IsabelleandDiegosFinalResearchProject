@@ -3,7 +3,6 @@ library("maptools")
 library("ggplot2")
 library("rworldmap")
 library("sp")
-library('rworldmap')
 library("dygraphs")
 library("stargazer")
 
@@ -20,7 +19,6 @@ CV2010 <- subset(CombinedVars2, year == 2010)
 CV2014 <- subset(CombinedVars2, year == 2014)
 pressfreedomss <- CombinedVars2[c(1,2,3,4)]
 orgassfreedomss <- CombinedVars2[c(1,2,3,5)]
-
 
 #simple R boxplots by year
 boxplot(pressfreedom ~ year, data = CombinedVars2, 
@@ -96,9 +94,11 @@ mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractional
 
 #histograms - Gini coefficients 2005 and 2010
 gini2005hist <- qplot(Ginicoef, data=CV2005, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
-  ggtitle("Distribution of Available Gini Coefficients for 2005")
-gini2010hist <- qplot(Ginicoef, data=CV2010, geom="histogram") + geom_histogram(aes(fill = ..count..)) + 
-  ggtitle("Distribution of Available Gini Coefficients for 2010")
+  scale_x_reverse() +
+  labs(title="Distribution of Available Gini Coefficients for 2005", x="Coefficient", y="Frequency")
+gini2010hist <- qplot(Ginicoef, data=CV2010, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
+  scale_x_reverse() +
+  labs(title="Distribution of Available Gini Coefficients for 2010", x="Coefficient", y="Frequency")
 
 
 #boxplots - freedom of press and organizational freedom by year
@@ -119,3 +119,4 @@ ggplot2::ggplot(CV2014, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_smo
   xlab("Ethnic fractionalization") +
   ylab("Freedom of the press")
 
+save.image(file="workspacefinal.RData")
