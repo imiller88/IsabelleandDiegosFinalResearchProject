@@ -5,6 +5,7 @@ library("rworldmap")
 library("sp")
 library("dygraphs")
 library("stargazer")
+library("knitr")
 
 
 #view dataset
@@ -19,6 +20,13 @@ CV2010 <- subset(CombinedVars2, year == 2010)
 CV2014 <- subset(CombinedVars2, year == 2014)
 pressfreedomss <- CombinedVars2[c(1,2,3,4)]
 orgassfreedomss <- CombinedVars2[c(1,2,3,5)]
+
+#create table
+summary(CombinedVars2)
+
+table1 <- summary(CombinedVars2[c(4,6,7)])
+kable(table1, align = 'c', digits = 2, 
+      caption = 'Measures of Central Tendency')
 
 #simple R boxplots by year
 boxplot(pressfreedom ~ year, data = CombinedVars2, 

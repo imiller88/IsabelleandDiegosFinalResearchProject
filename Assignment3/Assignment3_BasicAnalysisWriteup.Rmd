@@ -63,9 +63,15 @@ Unlike in the case of the WDI, there is no API. Therefore, we had to download an
 #Descriptive and Inferential Statistics
 
 ##Descriptive Statistics
-To follow are some basic descriptive statistics examining our main variables of interest: Freedom of the Press, Ethnic Fractionalization, and income inequality as measured by the Gini Coefficient. 
+To follow are some basic descriptive statistics examining our main variables of interest: Freedom of the Press (pressfreedom), Ethnic Fractionalization (ethnicfrac), and income inequality as measured by the Gini Coefficient (Ginicoef). 
 
-Here the data has been subset into years to compare change over time. Below we can see the distribution of countries by relative income inequality for the years 2005 and 2010. These statistics are difficult to interpret, since while we can assume that income inequality does not change so dramatically in most countries over the course of 5 years, the graphs appear drastically different due to the inconsistency of data available from year to year. In other words, these two charts show different sets of countries; therefore, no conclusion can be drawn as to change in income inequality on a global scale over time.
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+table1 <- summary(CombinedVars2[c(4,6,7)])
+kable(table1, align = 'c', digits = 2, 
+      caption = 'Measures of Central Tendency')
+```
+
+In the following figures, the data has been subset into years to compare change over time. We can see the distribution of countries by relative income inequality for the years 2005 and 2010. These statistics are difficult to interpret, since while we can assume that income inequality does not change so dramatically in most countries over the course of 5 years, the graphs appear drastically different due to the inconsistency of data available from year to year. In other words, these two charts show different sets of countries; therefore, no conclusion can be drawn as to change in income inequality on a global scale over time.
 
 ```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
 qplot(Ginicoef, data=CV2005, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
@@ -126,6 +132,7 @@ mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Freedom 2
 
 
 Since ethnic fractionalization tends to remain relatively steady over time, we have chosen to look at the most recently available statistics. We have categorized countries into bins of relative ethnic fractionalization, where green is a high probability that any two individuals randomly selected from the population be of different ethnicities, magenta is a low probability (implying high ethnic homogeneity), and blue and orange fall somewhere in the middle. It is interesting to see how the upper half of the scale - those countries in green and orange - and the lower half - blue and magenta - cluster in regions of the world. While we believe this may have implications for similar patterns in strength of political rights, at first glance we see no comparable pattern between this map and the previous ones. The fact that this remains relatively more constant over time than press freedom also suggest that there are likely other factors we need to take into account.
+
 
 ```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
 
