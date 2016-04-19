@@ -5,13 +5,19 @@ library("rworldmap")
 library("sp")
 library('rworldmap')
 library("dygraphs")
-
+library("stargazer")
 
 
 #view dataset
 names(CombinedVars2) #list variables
 str(CombinedVars2) #overview of dataset structure
 table(CombinedVars2$year)
+
+#create year subsets
+CV2002 <- subset(CombinedVars2, year == 2002)
+CV2005 <- subset(CombinedVars2, year == 2005)
+CV2010 <- subset(CombinedVars2, year == 2010)
+CV2014 <- subset(CombinedVars2, year == 2014)
 
 
 #boxplot by year
@@ -30,27 +36,21 @@ boxplot(CombinedVars2$ethnicfrac,
         main = "Distribution of Degrees of Ethnic Fractionalization")
 
 #histograms of press freedom over time
-CV2002 <- subset(CombinedVars2, year == 2002)
 hist(CV2002$pressfreedom,
      breaks=10, #puts countries into bins
      xlim=c(100,1)) #reverse x axis
 
-CV2005 <- subset(CombinedVars2, year == 2005)
 hist(CV2005$pressfreedom, 
      breaks=10, 
      xlim=c(100,1)) 
 
-CV2010 <- subset(CombinedVars2, year == 2010)
 hist(CV2010$pressfreedom, 
      breaks=10, 
      xlim=c(100,1)) 
 
-CV2014 <- subset(CombinedVars2, year == 2014)
 hist(CV2014$pressfreedom, 
      breaks=10,
      xlim=c(100,1))
-
-hist(CV2005$orgassfreedom)
 
 #rworldmap maps
 #2002
@@ -90,6 +90,14 @@ mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractional
                catMethod = 'fixedWidth',
                numCats = 4,
                borderCol='black')
+
+
+gini2005hist <- qplot(Ginicoef, data=CV2005, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
+  ggtitle("Distribution of Available Gini Coefficients for 2005")
+gini2010hist <- qplot(Ginicoef, data=CV2010, geom="histogram") + geom_histogram(aes(fill = ..count..)) + 
+  ggtitle("Distribution of Available Gini Coefficients for 2010")
+
+
 
 
 
