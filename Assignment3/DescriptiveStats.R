@@ -110,7 +110,12 @@ bporgassfreedom <- ggplot(orgassfreedomss, aes(x=year, y=orgassfreedom)) + geom_
   labs(title="Distribution of Organization Freedom Scores by Year",x="Year", y = "Freedom Score")+
   theme_classic()
 
+#scatter plots with ggplot2
+ggplot2::ggplot(CombinedVars2, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_smooth() + theme_bw() + ggtitle("Ethnic Frac-Freedom of the Press Correlation") +
+  xlab("Ethnic fractionalization") +
+  ylab("Freedom of the press")
 
-
-
+ggplot2::ggplot(CV2014, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_smooth() + theme_bw() + ggtitle("Ethnic Frac-Freedom of the Press Correlation") +
+  xlab("Ethnic fractionalization") +
+  ylab("Freedom of the press")
 
