@@ -23,11 +23,11 @@ The isolated code for the merging of variables into a single dataset can be foun
 
 #Part II: Statistics
 
-####*Descriptive Statistics*
+####*Descriptive Statistics and Inferential Statistics*
 
-All descriptive statistics, including those not included in Assignment3_BasicAnalysisWriteup.Rmd, can be found in the file DescriptiveStats.R. 
+All statistics, including those not included in Assignment3_BasicAnalysisWriteup.Rmd, can be found in the file Descriptive&InferentialStatistics.R. 
 
 In order to reproduce the workspace used in the markdown document (workspacefinal.RData), including all of the subsets used for specific visualizations, this file must be run.
 
 
-####*Inferential Statistics*
+
