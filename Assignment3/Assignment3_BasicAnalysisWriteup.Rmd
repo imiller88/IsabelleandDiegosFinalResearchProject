@@ -36,11 +36,11 @@ When it comes to gathering the data from the Quality of Government Standard Time
 
 ##World Development Indicators 
 
-As there is a WDI Package for R, we can the use the World Bank indicator codes in order to download automatically from the World Bank´s APIs the variables that we are interested in. Those variables are two: the Gini coefficient, which meassures income inequality (World Bank code: SI.POV.GINI), as well as GDP per capita in current US dollars (World Bank code: NY.GDP.PCAP.CD) [@wdi]
+As there is a WDI Package for R, we could the use the World Bank indicator codes in order to download automatically from the World Bank´s APIs the variables that we are interested in. Those variables are two: the Gini coefficient, which meassures income inequality (World Bank code: SI.POV.GINI), as well as GDP per capita in current US dollars (World Bank code: NY.GDP.PCAP.CD) [@wdi]
 
 ##Worldwide Governance Indicators 
 
-Unlike in the case of the WDI, there is no API. Therefore, we had to download and import into R the data in a csv file, contained in a zip file that we had to unzip. Since we are only interested in the Voice and Accountability variable for the years 2002-2014, we drop the other five variables (Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption)  as well as the values that the variable Voice and Accountability takes for the remaining years (1996, 1998, 2000)  [@Kaufmann2010]. 
+Unlike in the case of the WDI, there is no API. Therefore, we had to download and import into R the data in a csv file, contained in a zip file that we had to unzip. Since we are only interested in the Voice and Accountability variable for the years 2002-2014, we dropped the other five variables (Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption)  as well as the values that the variable Voice and Accountability takes for previous years (1996, 1998, 2000) [@Kaufmann2010]. 
 
 
 #Descriptive and Inferential Statistics
