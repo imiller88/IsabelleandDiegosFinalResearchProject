@@ -1,23 +1,9 @@
-<style>
-.footer {
-    color: black;
-    background: #E8E8E8;
-    position: fixed;
-    top: 90%;
-    text-align:center;
-    width:100%;
-}
-</style>
-
 ---
 title: "ClassPresentation"
-author: "Diego Fern??ndez Fern??ndez and Isabelle Miller"
-date: "27 Apr 2016"
-output: ioslides_presentation
+author: "Diego Fernandez Fernandez and Isabelle Miller"
+date: "2 May 2016"
+output: beamer_presentation
 ---
-
-
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
