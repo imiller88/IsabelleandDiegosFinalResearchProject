@@ -23,3 +23,10 @@ summary(M3_2008)
 
 M1_2010 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
 summary(M1_2010)
+
+
+
+# create lagged press freedom variable
+pressfreedom <- CombinedVars2$pressfreedom
+lagpressfree <- lag(pressfreedom, k = 1) #why didn't this create a data frame????
+

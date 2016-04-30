@@ -1,0 +1,40 @@
+Ethnic Fractionalization and Political Rights of Participation
+========================================================
+author: Diego Fernandez Fernandez and Isabelle Miller 
+date: 2 May 2016
+autosize: true
+
+Merkel's Concept of Embedded & Defective Democracies
+========================================================
+
+For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Research Question and Variables
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Main Variables of Interest
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+
+Methods / Model
+========================================================
+
+
+Preliminary Results
+========================================================
+
+
+What's next?
+========================================================
