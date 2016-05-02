@@ -87,9 +87,14 @@ mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractional
 CV2008 <- subset(CombinedVars2, year == 2008)
 CV2010 <- subset(CombinedVars2, year == 2010)
 
-M1_2008 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
+M1_2008 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac: Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
 
-M2_2010 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
+M2_2010 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac: Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
+
+labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "Ethnicfrac*Gini", "GDP per capita", "Judicial Independence", "Linguistic Fractionalization", ("Intercept"))
+label_DV <- c("Freedom of the press")
+
+stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (3)", digits = 2, type = "latex", header = FALSE)
 
 
 
