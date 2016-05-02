@@ -6,25 +6,32 @@ autosize: true
 
 Merkel's Concept of Embedded & Defective Democracies
 ========================================================
+Internal and external embeddedness 
 
-For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+- External: spheres of enabling conditions that protect from         destabilization.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- Internal: independence and interdependence of five "partial regimes". We focus on political rights of participation - freedom of speech and opinion + freedom of association, demonstration, and petition. 
+
 
 Research Question and Variables
 ========================================================
+-Does ethnic fractionalization have an effect on freedom of speech and opinion?
 
-```{r}
-summary(cars)
-```
+-Hypothesis: the more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high. 
 
-Main Variables of Interest
+-DV - pressfreedom; IV - ethnicfrac + gini + ethnicfrac*gini + GDPpercapita + langfrac + judindep
+
+__PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + +B6Linguisticfraci + Errori__
+
+Descriptive Statistics
 ========================================================
 
 ```{r, echo=FALSE}
-plot(cars)
+getwd
+try(setwd("/Users/Diegotab/GitHub/IsabelleandDiegosFinalResearchProject/Assignment3"), silent = TRUE)
+try(setwd("/Users/isabellemiller/GitHub/IsabelleandDiegosFinalResearchProject/Assignment3"), silent =TRUE)
+load("workspacefinal.RData")
+View(CombinedVars2)
 ```
 
 
@@ -34,7 +41,9 @@ Methods / Model
 
 Preliminary Results
 ========================================================
-
+```{r}
+summary(cars)
+```
 
 What's next?
 ========================================================

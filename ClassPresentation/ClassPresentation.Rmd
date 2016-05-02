@@ -6,35 +6,90 @@ output: beamer_presentation
 ---
 
 ```{r setup, include=FALSE}
+load("workspacefinal.RData")
+library("rworldmap")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Merkel's Concept of Embedded & Defective Democracies
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Internal and external embeddedness 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+- External: spheres of enabling conditions that protect from         destabilization.
+
+- Internal: independence and interdependence of five "partial regimes". We focus on political rights of participation - freedom of speech and opinion + freedom of association, demonstration, and petition.
 
 ## Research Question and Variables
+-Does ethnic fractionalization have an effect on freedom of speech and opinion?
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+-Hypothesis: the more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high. 
 
-## Main Variables of Interest
+-DV - pressfreedom; IV - ethnicfrac + gini + ethnicfrac*gini + GDPpercapita + langfrac + judindep
 
-```{r cars, echo = TRUE}
-summary(cars)
+__PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + +B6Linguisticfraci + Errori__
+
+## Descriptive Statistics
+```{r, echo=FALSE}
+
+#pressfreedom 2002
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Constraints 2002',
+               colourPalette = c("heat"),
+               catMethod = 'fixedWidth',
+               numCats = 8,
+               borderCol='black')
+
+```
+
+## Descriptive Statistics 2
+```{r, echo=FALSE}
+#pressfreedom 2014
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Constraints 2014',
+               colourPalette = c("heat"),
+               catMethod = 'fixedWidth',
+               numCats = 8,
+               borderCol='black')
+```
+
+## Descriptive Statistics 3
+```{r, echo=FALSE}
+#ethnicfrac 2002 (higher = more fractionalized)
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2002',
+               colourPalette = c("magenta", "blue", "darkorange", "green"),
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+```
+
+##Descriptive Statistics 4
+
+```{r, echo=FALSE}
+#ethnicfrac 2014
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2014',
+               colourPalette = c("magenta", "blue", "darkorange", "green"),
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
 ```
 
 ## Methods / Model
 
-```{r pressure}
-plot(pressure)
+-Descriptive statistics
+
+-Cross-sectional OLS regressions for a couple of years. 
+(Although we have data for the period 2002-2014, we discarded panel data because our main variables of interest do not vary so much over that time)
+
+## Preliminary Regression Results
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
+CV2008 <- subset(CombinedVars2, year == 2008)
+CV2010 <- subset(CombinedVars2, year == 2010)
+
+M1_2008 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
+
+M2_2010 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
+
 ```
-
-## Preliminary Results
-
-
 
 ## What's next?
