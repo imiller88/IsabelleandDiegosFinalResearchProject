@@ -29,45 +29,53 @@ Internal and external embeddedness
 
 __PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + +B6Linguisticfraci + Errori__
 
-## Descriptive Statistics
+## Press Freedom 2002
 ```{r, echo=FALSE}
 
 #pressfreedom 2002
-mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Constraints 2002',
-               colourPalette = c("heat"),
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= '',
+               colourPalette = c("darkgreen", "green", "yellow", "orange", "darkorange", "red"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
                catMethod = 'fixedWidth',
-               numCats = 8,
+               numCats = 6,
                borderCol='black')
 
 ```
 
-## Descriptive Statistics 2
+## Press Freedom 2014
 ```{r, echo=FALSE}
 #pressfreedom 2014
-mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Constraints 2014',
-               colourPalette = c("heat"),
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= '',
+               colourPalette = c("darkgreen", "green", "yellow", "orange", "darkorange", "red"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
                catMethod = 'fixedWidth',
-               numCats = 8,
+               numCats = 6,
                borderCol='black')
 ```
 
-## Descriptive Statistics 3
+## Ethnic Fractionalization 2002
 ```{r, echo=FALSE}
 #ethnicfrac 2002 (higher = more fractionalized)
-mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2002',
-               colourPalette = c("magenta", "blue", "darkorange", "green"),
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= '',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
                catMethod = 'fixedWidth',
                numCats = 4,
                borderCol='black')
 
 ```
 
-##Descriptive Statistics 4
+##Ethnic Fractionalization 2014
 
 ```{r, echo=FALSE}
 #ethnicfrac 2014
-mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2014',
-               colourPalette = c("magenta", "blue", "darkorange", "green"),
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= '',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
                catMethod = 'fixedWidth',
                numCats = 4,
                borderCol='black')
@@ -106,3 +114,5 @@ stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels
 -Multiple imputation
 
 -Including lagged press freedom as independent variable
+
+-Interpretation of interaction term
