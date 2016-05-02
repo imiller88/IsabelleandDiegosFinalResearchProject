@@ -97,8 +97,12 @@ label_DV <- c("Freedom of the press")
 
 stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE, font.size = "tiny")
 
-
-
 ```
 
 ## What's next?
+
+-Finding the best way to deal with variables of interest which are nearly time-invariant
+
+-Multiple imputation
+
+-Including lagged press freedom as independent variable
