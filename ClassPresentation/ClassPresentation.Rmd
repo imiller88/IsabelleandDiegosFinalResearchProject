@@ -8,6 +8,7 @@ output: beamer_presentation
 ```{r setup, include=FALSE}
 load("workspacefinal.RData")
 library("rworldmap")
+library("stargazer")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -89,6 +90,8 @@ CV2010 <- subset(CombinedVars2, year == 2010)
 M1_2008 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
 
 M2_2010 <- lm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
+
+
 
 ```
 
