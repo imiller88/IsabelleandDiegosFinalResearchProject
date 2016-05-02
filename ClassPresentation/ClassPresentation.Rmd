@@ -116,3 +116,5 @@ stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels
 -Including lagged press freedom as independent variable
 
 -Interpretation of interaction term
+
+-different groupings (defective vs. embedded, dropping outliers or non-OECD)
