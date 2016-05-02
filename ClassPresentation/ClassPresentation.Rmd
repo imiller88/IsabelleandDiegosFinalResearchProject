@@ -20,6 +20,18 @@ Internal and external embeddedness
 
 - Internal: independence and interdependence of five "partial regimes". We focus on political rights of participation - freedom of speech and opinion + freedom of association, demonstration, and petition.
 
+## Paul Collier's Research on Ethnic Fractionalization and Conflict
+
+In developed democracies:
+
+- higher ethnic fractionalization can play a stabilizing role 
+
+In authoritarian regimes:
+
+- "dominance" increases probability of violent conflict
+
+- pattern of fractionalization without dominance can also be stabilizing
+
 ## Research Question and Variables
 -Does ethnic fractionalization have an effect on freedom of speech and opinion?
 
