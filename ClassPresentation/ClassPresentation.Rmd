@@ -41,6 +41,33 @@ In authoritarian regimes:
 
 __PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + +B6Linguisticfraci + Errori__
 
+
+## Methods / Model
+
+-Descriptive statistics
+
+-Cross-sectional OLS regressions for a couple of years. 
+(Although we have data for the period 2002-2014, we discarded panel data because our main variables of interest do not vary so much over that time)
+
+## Preliminary Regression Results
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
+
+CV2008 <- subset(CombinedVars2, year == 2008)
+CV2010 <- subset(CombinedVars2, year == 2010)
+
+M1_2008 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac:Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
+
+M2_2010 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac:Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
+
+labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "Ethnicfrac*Gini", "GDP per capita", "Judicial Independence", "Linguistic Fractionalization", ("Intercept"))
+label_DV <- c("Freedom of the press")
+
+stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE, font.size = "tiny")
+
+```
+
+
 ## Press Freedom 2002
 ```{r, echo=FALSE}
 
@@ -91,31 +118,6 @@ mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= '',
                catMethod = 'fixedWidth',
                numCats = 4,
                borderCol='black')
-
-```
-
-## Methods / Model
-
--Descriptive statistics
-
--Cross-sectional OLS regressions for a couple of years. 
-(Although we have data for the period 2002-2014, we discarded panel data because our main variables of interest do not vary so much over that time)
-
-## Preliminary Regression Results
-
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
-
-CV2008 <- subset(CombinedVars2, year == 2008)
-CV2010 <- subset(CombinedVars2, year == 2010)
-
-M1_2008 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac:Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
-
-M2_2010 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac:Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
-
-labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "Ethnicfrac*Gini", "GDP per capita", "Judicial Independence", "Linguistic Fractionalization", ("Intercept"))
-label_DV <- c("Freedom of the press")
-
-stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE, font.size = "tiny")
 
 ```
 
