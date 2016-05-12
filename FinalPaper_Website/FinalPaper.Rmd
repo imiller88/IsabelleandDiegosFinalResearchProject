@@ -179,7 +179,7 @@ Before jumping right into our analysis, we first inspected the variables for any
 
 Below please see some simple descriptive distributions of the main variables of interest. We must take care to take the skewness of our independent variables into account when running OLS regressions.
 
-````{r histograms, include=FALSE, echo=FALSE}
+````{r histograms, echo=FALSE, error=FALSE, message=FALSE}
 
 pressfree10hist <- qplot(pressfreedom, data=CV10_Gini, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
   scale_x_reverse() +
@@ -197,7 +197,7 @@ gini10hist
 
 When looking at correlations between ethnic fractionalization and press freedom, we can see an interesting shift when ethnic freedom is interacted with inequality. There seems to be a general negative correlation between ethnic fractionalization and press freedom (the higher the fractionalization, the lower the press freedom, in accordance with our theory) but there is also a clear dip around an ethnic fractionalization value of 0.30 (a 0.30 chance that any two individuals selected from a given society will belong to different ethnic groups). 
 
-````{r ggplots, include=FALSE, echo=FALSE}
+````{r ggplots, echo=FALSE, error=FALSE, message=FALSE}
 ggplot2::ggplot(CV10_Gini, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_smooth() + theme_bw() + 
   ggtitle("Ethnic Fractionalization & Press Freedom 2010") +
   xlab("Ethnic fractionalization") +
