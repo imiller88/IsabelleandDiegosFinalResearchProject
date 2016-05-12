@@ -2,7 +2,7 @@
 title: "Final Paper: Ethnic Fractionalization and Political Rights"
 authors: "Diego Fernandez Fernandez and Isabelle Miller"
 date: "13 May 2016"
-output: html_document
+output: pdf_document
 bibliography: CitationsFinal.bib
 ---
 
