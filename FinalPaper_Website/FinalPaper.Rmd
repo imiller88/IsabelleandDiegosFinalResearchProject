@@ -24,9 +24,15 @@ In response to what he views as the oversimplification of the definition of demo
 
 For the purposes of this study, we shall be inspecting the effects of ethnic fractionalization on one of these so-called "partial regimes": that of the political rights of participation. Merkel identifies two qualifiers for the institutional core of political rights to be considered intact: freedom of speech and opinion, and the freedom of association, demonstration, and petition. He justifies their allotted role as a partial democratic regime by pointing out the important roles they play as an enabler to fair and organized democratic elections and in ensuring the complete development of political society, which in turn behaves as a check and balance on state institutions [-@Merkel2004]. 
 
-While a brief literature review has shown that a lot of research exists on the effects of ethnic diversity and ethnic fractionalization on the quality of democracy, access to resources, and civil rights, we were unable to find any studies that focus specifically on the effect of ethnic fractionalization on the freedoms of speech and association. Paul Collier's research reveals the interesting dynamic between ethnic fractionalization and civil unrest or outbreak of violence in the form of civil wars, pointing out that, while higher ethnic fractionalization can actually play a stabilizing role in developed democracies, it can be quite harmful in authoritarian regimes, depending on the pattern of fractionalization that is present [@Collier2000]. In this sense, we also predict that the relationship between ethnic fractionalization and political rights is likely to be dependent on an interaction or conditioning variable. Although we initially wanted to interact ethnic fractionalization with level of democracy, we are well aware of the endogeneity concerns that such an interaction would generate since one of the main components of a level of democratization variable would likely be political rights, our dependent variable. In spite of this, we still believe that the level of development of a country plays a significant role in explaining the impact of ethnic fractionalization on political rights. As we are also very interested in recent scholarly research suggesting that excessive inequalities undermine democratic political regimes [@Acemoglu2006; @Boix2003], we would like like to posit, then, that ethnic fractionalization can play an important role in determining the level of Merkel's political rights when the country is at an advanced stage of development, understanding by this that wealth is broadly distributed in society and that, hence, income inequality is low. 
+While a brief literature review has shown that a lot of research exists on the effects of ethnic diversity and ethnic fractionalization on the quality of democracy, access to resources, and civil rights, we were unable to find any studies that focus specifically on the effect of ethnic fractionalization on the freedoms of speech and association. Paul Collier's research reveals the interesting dynamic between ethnic fractionalization and civil unrest or outbreak of violence in the form of civil wars, pointing out that, while higher ethnic fractionalization can actually play a stabilizing role in developed democracies, it can be quite harmful in authoritarian regimes, depending on the pattern of fractionalization that is present [@Collier2000]. 
 
-Specifically, we hypothesize that high ethnic fractionalization will have a negative impact on the preservation of political rights, as different groups compete to dominate the political discourse. Furthermore, we postulate that this impact will depend on the level of income inequality in a country: the less equal a country, the higher the negative impact high ethnic fractionalization will have on political rights. Conversely, the more equal a country, the higher the positive impact high ethnic fractionalization will have on political rights. Our main hypothesis is, then:
+Due to this, we also predict that the relationship between ethnic fractionalization and political rights is likely to be dependent on an interaction or conditioning variable. Based on the belief that the level of development of a country plays a significant role in explaining the impact of ethnic fractionalization on political rights and recent scholarly research suggesting that excessive inequalities undermine democratic political regimes [@Acemoglu2006; @Boix2003], we posit that ethnic fractionalization can play an important role in determining the level of Merkel's political rights when the country is at an advanced stage of development, understanding by this that wealth is broadly distributed in society and that, hence, income inequality is low. 
+
+Therefore, basing our understanding of economic development on OECD ideals, we assume inequality to be a suitable proxy and assume the Gini coefficient, a popular measure of inequality, as an interaction variable. The general stance taken in the academic literature is that inequality contributes to political instability, which in turn negatively affects economic development. The literature regarding the first portion theory is mixed: while a large body of literature claims to prove that inequality is a direct instigator of political instability and violence, many studies have also challenged this claim. However, the effect of political instability on economic development is rarely disputed, and is based on the assumption that instability plays a disruptive role on market activities and negatively affects investment[@Giskemo2012].
+
+Coincidentally, ethnic fractionalization has also been shown to play a role on economic development in some contexts; it has been asserted that high fractionalization can interfere with the provision of public goods meant to promote growth. Others have suggested that the degree of ethnic diversity plays a significant role in the development of institutional exclusivity by allowing elites to easily identify groups for exclusion from certain privileges [@CaseyOwen2010]. Casey and Owen have shown that inequality perpetuated by ethnic divisions is particularly bad for economic growth relative to those perpetuated by other variables, and also that ethnic fractionalization is an important determinant of institutional quality [-@CaseyOwen2010]. Whether any conclusion can be drawn as to its effect on the institutions included in Merkel's definition of political rights remains to be seen.
+
+In summary, we hypothesize that high ethnic fractionalization will have a negative impact on the preservation of political rights, as different groups compete to dominate the political discourse. Furthermore, we postulate that this impact will depend on the level of income inequality in a country: the less equal a country, the higher the negative impact high ethnic fractionalization will have on political rights. Conversely, the more equal a country, the higher the positive impact high ethnic fractionalization will have on political rights. Our main hypothesis is, then:
 
 **H1: The more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high.**
 
@@ -34,17 +40,17 @@ Consequently:
 
 **H2: When income inequality is low, the impact of high ethnic fractionalization on political rights is expected to be positive.**
 
-Control variables that we have considered so far include the following: \itemize{
+The following control variables are included in our model: \itemize{
 \item{Linguistic fractionalization}{ - while linguistic identity may often overlap with ethnic identity, it also often plays a unifying role in multi-ethnic societies. This unifying role may, in turn, affect the intergroup competition and conflict that we theorize may play a negative role on political rights. However, the risk of multicollinearity will likely have to be accounted for and monitored. We also considered religious fractionalization as a similar control variable, but concluded that religious correlation to ethnicity is often much higher than linguistic correlation and therefore the probability of collinearity problems would be too high.}
 
-\item{Income per capita}{ - lack of wealth can produce general dissatisfaction and conflict among a population, and in turn also exacerbate intergroup conflict. We would also want to control for its residual effects.}
+\item{Income (GDP) per capita}{ - lack of wealth can produce general dissatisfaction and conflict among a population, and in turn also exacerbate intergroup conflict. We would also want to control for its residual effects.}
 
 \item{Judicial independence}{ - judicial independence serves, here, as a proxy for horizontal accountability, which in turn guarantees the ability of the state to keep itself in check. As a control variable, it would help control for the role of the state in the possible suppression of political rights.}
 
 \item{Indicators of government accountability}{ - these would play a similar role to judicial independence in controlling for the role of the state in other positively or negatively determining the preservation of political rights.}
 }
 
-#Variables and methodology
+#Variables
 With regards to how we would go about operationalizing our dependent variable, main independent variables, and control variables, we plan to make use of the following indicators: \itemize{
 \item{Dependent variable}{ - as we have already said, according to Merkel's strict definition, political rights shall consist for the purposes of this study of the freedom of speech and opinion on the one hand, and the freedom of association, demonstration, and petition on the other hand. Since the majority of political rights variables that we have found encompass more dimensions than those (that is to say, are somewhat broader than our selected definition), we have decided to depend upon Freedom House's Freedom of the Press variable as a proxy for freedom of speech and opinion. Nevertheless, we also intend to run the second dimension, freedom of association, demonstration, and petition, as alternative dependent variable to serve as a robustness check. As a proxy for this, we shall use Freedom House's Associational and Organizational Rights variable.}
 
@@ -52,16 +58,24 @@ With regards to how we would go about operationalizing our dependent variable, m
 
 \item{Interaction variable}{ - for income inequality, we are intending to use the Gini coefficient, which takes values from 0 to 1, being 0 maximum equality and 1 maximum inequality.}
 
-\item{Control variables}{ - Alesina et al.'s linguistic fractionalization indicator, GDP per capita, the independence of judiciary categorical variable developed by CIRI Human Rights Data Project, and the voice and accountability variable from the World Bank's Worldwide Governance Indicators will serve as our chosen control variables.}
+\item{Control variables}{ - Alesina et al.'s linguistic fractionalization indicator, GDP per capita, and the independence of judiciary categorical variable developed by CIRI Human Rights Data Project serve as our chosen control variables.}
 }
 
+All the variables used in this study are easily accessed in the Quality of Government Standard Dataset developed by the Quality of Government Institute from Gothenburg [@QualityofGovernment2015], the World Bank's World Governance Indicators dataset, and the World Development Indicators dataset, which is provided as an R package, also by the World Bank.
 
-As for our methodology, we want to use a panel data model, covering 171 countries for at least the last 20 years. All the variables that we are planning to make use of can be easily accessed in the Quality of Government Standard Dataset developed by the Quality of Government Institute from Gothenburg [@QualityofGovernment2015]. Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, which is the variation experimented by one same unit across time, we are considering a fixed-effects model. However, this may still not be ideal due to the fact that we do not expect our main independent variable, ethnic fractionalization, to change much over time. In a fixed-effects model, time-invariant independent variables are likely to get eaten up by the country-specific time-invariant fixed effects. In our case, this is something that we cannot ignore since the nearly time-invariant explanatory variable is also our main independent variable. In this sense, when dealing with almost time-invariant variables and panel data, scholars have identified three potential ways forward: pooled OLS, random effects or a Hausman-Taylor formulation [@Plumper2004]. Consequently, we intend to run the different models and compare our coefficients across them. Our basic equation (from the pooled OLS model) will be as follows:
+#Methodology
+While we initially intended to use a panel data model, the lack of availability of data spanning multiple years by our main independent variables, ethnic fractionalization and the Gini coefficient, forced us into simple linear modelling for those years we were able to collect quality data. Therefore, our primary model consists of pooled OLS regressions for the years 2008 and 2010, for which we were able to collect the most complete data. 
+
+Our basic equation (from the pooled OLS model) will be as follows:
 \vspace{0.5cm}
 
 *PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + B6Voiceandaccounti +B7Linguisticfraci + Errori*
 
+Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, we also attempt a first difference model using these same two years (2008 and 2010); however, taking into account that the data used for ethnic fractionalization is constant over the 13-year period for which we collected the data, it would also only indicate the effects of changes in inequality, which is in most cases negligible over a two year period.
 
+#Data Exploration
+
+Before jumping right into our analysis, we first sought patterns among the variables. 
 
 ````{r OUTLINE, include=FALSE}
 
@@ -73,7 +87,9 @@ Relationship between ethnic frac and democracy is non-linear - explore non-linea
 
 Remember to discuss potential multicollinearities between ethnic and linguistic frac, and possibly judicial independence and press freedom
 
-Also remember to discuss limitations 
+LIMITATIONS
+obviously years - unable to show change over time 
+
 
 ````
 

@@ -32,15 +32,30 @@ OLS08 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + ju
                data = CV08_Gini, model="pooling", index=c("cname"))
 summary(OLS08)
 
+#OLS 2008 with organizational freedom
+OLS08_org <- plm(orgassfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, 
+                       data = CV08_Gini, model="pooling", index=c("cname"))
+summary(OLS08_org)
+
 #OLS 2010
 OLS10 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, 
                data = CV10_Gini, model="pooling", index=c("cname"))
 summary(OLS10)
 
+#OLS 2010 with organizational freedom
+OLS10_org <- plm(orgassfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, 
+                 data = CV10_Gini, model="pooling", index=c("cname"))
+summary(OLS10_org)
+
+#multicollinearity is HUGE between ethnicfrac and interaction variable, but to be expected
+vif(OLS08)
+vif(OLS10)
+
 #OLS 2008 omitting gini coef
 OLS08_nogini <- plm(pressfreedom ~ ethnicfrac + GDPpercapita + langfrac + judindep,
                     data = CV2008, model="pooling", index=c("cname"))
 summary(OLS08_nogini)
+vif(OLS08_nogini) #here remarkably low VIF, including with langfrac - interesting
 
 OLS08quad <- plm(pressfreedom ~ ethnicfrac^2 + GDPpercapita + langfrac + judindep,
                 data = CV2008, model="pooling", index=c("cname"))
@@ -59,6 +74,7 @@ plot(CV08_Gini$pressfreedom, CV08_Gini$ethnicfrac, ylim=c(0,1))
 plot(CV08_Gini$ethnicfrac, ylim=c(0,1))
 plot(CV08_Gini$ethnicfrac^2, ylim=c(0,1))
 plot(CV08_Gini$Ginicoef,ylim=c(20,80))
+
 
 #end of random crap
 
