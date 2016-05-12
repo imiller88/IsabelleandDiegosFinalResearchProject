@@ -1,0 +1,134 @@
+---
+title: "Ethnic Fractionalization and Political Rights of Participation"
+author: "Diego Fernandez Fernandez and Isabelle Miller"
+date: "2 May 2016"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+load("workspacefinal.RData")
+library("rworldmap")
+library("stargazer")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Merkel's Concept of Embedded & Defective Democracies
+
+Internal and external embeddedness 
+
+- External: spheres of enabling conditions that protect from         destabilization.
+
+- Internal: independence and interdependence of five "partial regimes". We focus on political rights of participation - freedom of speech and opinion + freedom of association, demonstration, and petition.
+
+## Paul Collier's Research on Ethnic Fractionalization and Conflict
+
+In developed democracies:
+
+- higher ethnic fractionalization can play a stabilizing role 
+
+In authoritarian regimes:
+
+- "dominance" increases probability of violent conflict
+
+- pattern of fractionalization without dominance can also be stabilizing
+
+## Research Question and Variables
+-Does ethnic fractionalization have an effect on freedom of speech and opinion?
+
+-Hypothesis: the more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high. 
+
+-DV - pressfreedom; IV - ethnicfrac + gini + ethnicfrac*gini + GDPpercapita + langfrac + judindep
+
+__PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + +B6Linguisticfraci + Errori__
+
+
+## Methods / Model
+
+-Descriptive statistics
+
+-Cross-sectional OLS regressions for a couple of years. 
+(Although we have data for the period 2002-2014, we discarded panel data because our main variables of interest do not vary so much over that time)
+
+## Preliminary Regression Results
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
+
+CV2008 <- subset(CombinedVars2, year == 2008)
+CV2010 <- subset(CombinedVars2, year == 2010)
+
+M1_2008 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac:Ginicoef + GDPpercapita + langfrac + judindep, data = CV2008)
+
+M2_2010 <- lm(pressfreedom ~ ethnicfrac + Ginicoef + ethnicfrac:Ginicoef + GDPpercapita + langfrac + judindep, data = CV2010)
+
+labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "Ethnicfrac*Gini", "GDP per capita", "Judicial Independence", "Linguistic Fractionalization", ("Intercept"))
+label_DV <- c("Freedom of the press")
+
+stargazer::stargazer(M1_2008, M2_2010, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE, font.size = "tiny")
+
+```
+
+
+## Press Freedom 2002
+```{r, echo=FALSE}
+
+#pressfreedom 2002
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= '',
+               colourPalette = c("darkgreen", "green", "yellow", "orange", "darkorange", "red"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               catMethod = 'fixedWidth',
+               numCats = 6,
+               borderCol='black')
+
+```
+
+## Press Freedom 2014
+```{r, echo=FALSE}
+#pressfreedom 2014
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= '',
+               colourPalette = c("darkgreen", "green", "yellow", "orange", "darkorange", "red"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               catMethod = 'fixedWidth',
+               numCats = 6,
+               borderCol='black')
+```
+
+## Ethnic Fractionalization 2002
+```{r, echo=FALSE}
+#ethnicfrac 2002 (higher = more fractionalized)
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= '',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+```
+
+##Ethnic Fractionalization 2014
+
+```{r, echo=FALSE}
+#ethnicfrac 2014
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= '',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+```
+
+## What's next?
+
+-Finding the best way to deal with variables of interest which are nearly time-invariant
+
+-Multiple imputation
+
+-Including lagged press freedom as independent variable
+
+-Interpretation of interaction term
+
+-different groupings (defective vs. embedded, dropping outliers or non-OECD)

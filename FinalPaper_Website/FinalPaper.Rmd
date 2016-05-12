@@ -1,0 +1,217 @@
+---
+title: "Final Paper: Ethnic Fractionalization and Political Rights"
+authors: "Diego Fernandez Fernandez and Isabelle Miller"
+date: "13 May 2016"
+output: pdf_document
+bibliography: CitationsFinal.bib
+---
+
+````{r setup, include=FALSE}
+#load prepared data
+load("workspacefinal.RData")
+
+#call packages
+library("ggmap")
+library("maptools")
+library("ggplot2")
+library("rworldmap")
+library("sp")
+library("dygraphs")
+library("stargazer")
+library("knitr")
+library("plm")
+
+##prepare new datasets
+#subset years
+CV2008 <- subset(CombinedVars2, year == 2008)
+CV2010 <- subset(CombinedVars2, year == 2010)
+
+#drop rows that are NA in column 7 (ginicoef)
+CV08_Gini <- CV2008[complete.cases(CV2008[,7]),]
+CV10_Gini <- CV2010[complete.cases(CV2010[,7]),]
+
+#combine 2008 and 2010 by row
+CV08_10 <- rbind(CV08_Gini,CV10_Gini)
+
+#declare panel data
+CV08_10 <- plm.data(CV08_10, index=c("cname", "year"))
+
+````
+
+#Theoretical Background / Literature Review
+
+From 1974 to 1990, at least 30 countries made the transition to democracy. What Huntington has labelled the "third wave of democratization" [-@Huntington1991, pp. 12] has prompted an increasing scholarly interest in pinpointing the characteristics that makes a country truly democratic as well as what conditions need to be in place in order for a transition to democracy to be successful. 
+
+A plethora of definitions of democracy can be found in the literature. While some of them are procedural and minimalist [@Hardin1999; @Popper1963; @Przeworski1991; @Riker1982; @Schumpeter1950], others tend to be more comprehensive, maximalist, and "based on attributes widely understood to exist in few if any cases in the real world" [@CollierLevitsky1996, pp. 8]. Those attributes include social and economic equality and broad citizen participation at all levels of the decision-making political process. 
+
+According to Przeworski, a minimalist democracy is just "a system in which parties lose elections" [-@Przeworski1991, pp. 10]. In this sense, the value of democracy itself is the peaceful transfer of power carried out through regular elections. The point made by Schumpeter coincides since he argues that "the principle of democracy then merely means that the reins of government should be handed to those who command more support than do any of the competing individuals or team" [@Schumpeter1950, pp. 269]. Similarly, Popper emphasizes the importance of elections.  "The first type [of government] consists of governments of which we can get rid without bloodshed- for example, by way of general elections; that is to say, the social institutions provide means by which the rulers may be dismissed by the ruled" [@Popper1963, pp. 124]. 
+
+On the other hand, the maximalist approach developed by Dahl identifies three fundamental characteristics of democracy: (1) popular sovereignty, (2) political equality, and (3) majority rule [-@Dahl1956]. Similarly, Larry Diamond points out that democracy encompasses "not only a civilian, constitutional, multiparty regime, with regular, free and fair elections and universal suffrage, but organizational and informational pluralism; extensive civil liberties (freedom of expression, freedom of the press, freedom to form and join organizations); effective power for elected officials; and functional autonomy for legislative, executive and judicial organs of government" [-@Diamond1999, pp. 11].
+
+When it comes to discussing "illiberal"" (electoral) and "liberal" strains of democracy, two terms that became popular in the late 1990s, the distinction between procedural and maximalist conceptualizations of democracy is fundamental. If elections are the only prerequisite for a country to be classified as a democracy, then illiberal democracies, in which citizens freely choose a government that curtails their rights, may exist. In opposition to this, if democracy actually encompasses a bundle of indivisible institutions and processes built upon the principles of choice, participation, rule of law, rights, etc., such a thing as an illiberal democracy can simply not exist [@Zakaria1997].
+
+In response to what he views as the oversimplification of the definition of democracy into mere elections, Wolfgang Merkel puts forward the concept of "embedded democracy", which characterizes stable constitutional democracies by their internal and external "embeddedness". Internal embeddedness is defined by the simultaneous independence and interdependence of what Merkel calls the "five partial regimes" of democracy; that is to say, that each of the five partial regimes - a democratic electoral regime, political rights, civil rights, horizontal accountability, and the effective power to govern by the democratically elected representatives - are simultaneously independent from each other and support each other. External embeddedness refers to the embeddedness of this webbed structure in spheres of enabling conditions that protect it from inner and outer destabilizers and shocks, such as a developed economy, fair distribution of resources, and prevention of extreme poverty, to name a few conditions. By his same definition, any democracy where the mutual embeddedness of the five partial regimes is no longer intact is labelled a "defective democracy" [-@Merkel2004].
+
+#Research Question and Hypotheses
+
+For the purposes of this study, we shall be inspecting the effects of ethnic fractionalization on one of these so-called "partial regimes": that of the political rights of participation. Merkel identifies two qualifiers for the institutional core of political rights to be considered intact: freedom of speech and opinion, and the freedom of association, demonstration, and petition. He justifies their allotted role as a partial democratic regime by pointing out the important roles they play as an enabler to fair and organized democratic elections and in ensuring the complete development of political society, which in turn behaves as a check and balance on state institutions [-@Merkel2004]. 
+
+While a brief literature review has shown that a lot of research exists on the effects of ethnic diversity and ethnic fractionalization on the quality of democracy, access to resources, and civil rights, we were unable to find any studies that focus specifically on the effect of ethnic fractionalization on the freedoms of speech and association. Paul Collier's research reveals the interesting dynamic between ethnic fractionalization and civil unrest or outbreak of violence in the form of civil wars, pointing out that, while higher ethnic fractionalization can actually play a stabilizing role in developed democracies, it can be quite harmful in authoritarian regimes, depending on the pattern of fractionalization that is present [@Collier2000]. 
+
+Due to this, we also predict that the relationship between ethnic fractionalization and political rights is likely to be dependent on an interaction or conditioning variable. Based on the belief that the level of development of a country plays a significant role in explaining the impact of ethnic fractionalization on political rights and recent scholarly research suggesting that excessive inequalities undermine democratic political regimes [@Acemoglu2006; @Boix2003], we posit that ethnic fractionalization can play an important role in determining the level of Merkel's political rights when the country is at an advanced stage of development, understanding by this that wealth is broadly distributed in society and that, hence, income inequality is low. 
+
+Therefore, basing our understanding of economic development on OECD ideals, we assume inequality to be a suitable proxy and assume the Gini coefficient, a popular measure of inequality, as an interaction variable. The general stance taken in the academic literature is that inequality contributes to political instability, which in turn negatively affects economic development. The literature regarding the first portion theory is mixed: while a large body of literature claims to prove that inequality is a direct instigator of political instability and violence, many studies have also challenged this claim. However, the effect of political instability on economic development is rarely disputed, and is based on the assumption that instability plays a disruptive role on market activities and negatively affects investment[@Giskemo2012].
+
+Coincidentally, ethnic fractionalization has also been shown to play a role on economic development in some contexts; it has been asserted that high fractionalization can interfere with the provision of public goods meant to promote growth. Others have suggested that the degree of ethnic diversity plays a significant role in the development of institutional exclusivity by allowing elites to easily identify groups for exclusion from certain privileges [@CaseyOwen2010]. Casey and Owen have shown that inequality perpetuated by ethnic divisions is particularly bad for economic growth relative to those perpetuated by other variables, and also that ethnic fractionalization is an important determinant of institutional quality [-@CaseyOwen2010]. Whether any conclusion can be drawn as to its effect on the institutions included in Merkel's definition of political rights remains to be seen.
+
+In summary, we hypothesize that high ethnic fractionalization will have a negative impact on the preservation of political rights, as different groups compete to dominate the political discourse. Furthermore, we postulate that this impact will depend on the level of income inequality in a country: the less equal a country, the higher the negative impact high ethnic fractionalization will have on political rights. Conversely, the more equal a country, the higher the positive impact high ethnic fractionalization will have on political rights. Our main hypothesis is, then:
+
+**H1: The more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high.**
+
+Consequently:
+
+**H2: When income inequality is low, the impact of high ethnic fractionalization on political rights is expected to be positive.**
+
+The following control variables are included in our model: \itemize{
+\item{Linguistic fractionalization}{ - while linguistic identity may often overlap with ethnic identity, it also often plays a unifying role in multi-ethnic societies. This unifying role may, in turn, affect the intergroup competition and conflict that we theorize may play a negative role on political rights. However, the risk of multicollinearity will likely have to be accounted for and monitored. We also considered religious fractionalization as a similar control variable, but concluded that religious correlation to ethnicity is often much higher than linguistic correlation and therefore the probability of collinearity problems would be too high.}
+
+\item{Income (GDP) per capita}{ - lack of wealth can produce general dissatisfaction and conflict among a population, and in turn also exacerbate intergroup conflict. We would also want to control for its residual effects.}
+
+\item{Judicial independence}{ - judicial independence serves, here, as a proxy for horizontal accountability, which in turn guarantees the ability of the state to keep itself in check. As a control variable, it would help control for the role of the state in the possible suppression of political rights.}
+
+\item{Indicators of government accountability}{ - these would play a similar role to judicial independence in controlling for the role of the state in other positively or negatively determining the preservation of political rights.}
+}
+
+
+#Variables
+With regards to how we would go about operationalizing our dependent variable, main independent variables, and control variables, we plan to make use of the following indicators: \itemize{
+\item{Dependent variable}{ - as we have already said, according to Merkel's strict definition, political rights shall consist for the purposes of this study of the freedom of speech and opinion on the one hand, and the freedom of association, demonstration, and petition on the other hand. Since the majority of political rights variables that we have found encompass more dimensions than those (that is to say, are somewhat broader than our selected definition), we have decided to depend upon Freedom House's Freedom of the Press variable as a proxy for freedom of speech and opinion. Nevertheless, we also intend to run the second dimension, freedom of association, demonstration, and petition, as alternative dependent variable to serve as a robustness check. As a proxy for this, we shall use Freedom House's Associational and Organizational Rights variable.}
+
+\item{Main independent variable}{ - for ethnic fractionalization, we plan to use the indicator developed in 2003 by Alesina et al. Their variable ranges from 0 to 1, 0 being the most ethnically homogeneous that a country can be and 1 diverse or fractionalized.}
+
+\item{Interaction variable}{ - for income inequality, we are intending to use the Gini coefficient, which takes values from 0 to 100%, 0 representing perfect equality and 100% maximum inequality.}
+
+\item{Control variables}{ - Alesina et al.'s linguistic fractionalization indicator, GDP per capita, and the independence of judiciary categorical variable developed by CIRI Human Rights Data Project serve as our chosen control variables.}
+}
+
+All the variables used in this study are easily accessed in the Quality of Government Standard Dataset developed by the Quality of Government Institute from Gothenburg [@QualityofGovernment2015], the World Bank's World Governance Indicators dataset, and the World Development Indicators dataset, which is provided as an R package, also by the World Bank.
+
+#Methodology
+While we initially intended to use a panel data model, the lack of availability of data spanning multiple years by our main independent variables, ethnic fractionalization and the Gini coefficient, forced us into simple linear modelling for those years we were able to collect quality data. Therefore, our primary model consists of pooled OLS regressions for the years 2008 and 2010, for which we were able to collect the most complete data. 
+
+Our basic equation (from the pooled OLS model) will be as follows:
+\vspace{0.5cm}
+
+*PoliticalRightsi= B0 + B1EthnicFraci + B2IncomeIneqi + B3EthnicFracxIncomeIneqi + B4GDPcapitai + B5Judiciaryindependencei + B6Voiceandaccounti +B7Linguisticfraci + Errori*
+
+Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, we also attempt a first difference model using these same two years (2008 and 2010); however, taking into account that the data used for ethnic fractionalization is constant over the 13-year period for which we collected the data, it would also only indicate the effects of changes in inequality, which is in most cases negligible over a two year period.
+
+##*Limitations*
+````{r map setup, include=FALSE}
+iso08 <- joinCountryData2Map( CV08_Gini
+                             ,joinCode = "ISO2"
+                             ,nameJoinColumn = "iso2c")
+
+iso08_nogini <- joinCountryData2Map( CV2008
+                                     ,joinCode = "ISO2"
+                                     ,nameJoinColumn = "iso2c")
+
+iso10 <- joinCountryData2Map( CV10_Gini
+                              ,joinCode = "ISO2"
+                              ,nameJoinColumn = "iso2c")
+
+iso10_nogini <- joinCountryData2Map( CV2010
+                                     ,joinCode = "ISO2"
+                                     ,nameJoinColumn = "iso2c")
+````
+
+````{r maps, echo=FALSE, tidy=TRUE}
+mapCountryData(iso08_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (Before)',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               addLegend = FALSE,
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+mapCountryData(iso08, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (After)',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               addLegend = FALSE,
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+
+
+
+#ethnic fractionalization 2010
+mapCountryData(iso10_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (Before)',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               addLegend = FALSE,
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+mapCountryData(iso10, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (After)',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               addLegend = FALSE,
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+````
+
+After thoroughly cleaning the data of all unavailable data points, we were left with an n of 65 for 2008 and 67 for 2010. As seen in the images above, most African countries, smaller island nations, and all of South Asia have unfortunately been dropped from this sample due to lack of available Gini data; this means that, while there are some developing countries in Asia and Latin America included in the sample, it is disproportionately skewed towards Western and OECD countries. Therefore, we also include regression results run for the larger sample excluding the interacting variable (Gini coefficient).
+
+Additionally, this study is not able to show real change over time, as, although we do run a first difference panel data model, the variables in question do not vary significantly over such short periods of time. In order to be able to draw firmer conclusions, it would be ideal to run a panel data model over the course of at least 20-100 years to allow for changes in ethnic fractionalization and inequality to take place due to migration, economic cycles, regime changes, and/or various other mitigating factors. 
+
+
+
+#Data Exploration
+
+Before jumping right into our analysis, we first inspected the variables for any significant patterns. Given negligible change between the two years at hand, our descriptive analysis will focus on 2010, the most recently available year. Unless otherwise mentioned, the visuals shown here represent the subset dataset of countries for which a Gini coefficient for the year 2010 were available (please refer to the map above for an idea of which countries this includes).
+
+Below please see some simple descriptive distributions of the main variables of interest. We must take care to take the skewness of our independent variables into account when running OLS regressions.
+
+````{r histograms, include=FALSE, echo=FALSE}
+
+pressfree10hist <- qplot(pressfreedom, data=CV10_Gini, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
+  scale_x_reverse() +
+  labs(title="Press Freedom, 2010", x="Freedom (least to most free)", y="Countries in sample")
+pressfree10hist
+
+ethnicfrac10hist <- qplot(ethnicfrac, data=CV10_Gini, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
+  scale_x_reverse() +
+  labs(title="Ethnic Fractionalization, 2010", x="Ethnic Fractionalization, heterogenous to homogenous",       y="Countries in sample")
+ethnicfrac10hist
+
+gini10hist <- qplot(Ginicoef, data=CV10_Gini, geom="histogram") + geom_histogram(aes(fill = ..count..)) + labs(title="Distribution of Available Gini Coefficients for 2010", x="Inequality (low to high)", y="Frequency")
+gini10hist
+````
+
+When looking at correlations between ethnic fractionalization and press freedom, we can see an interesting shift when ethnic freedom is interacted with inequality. There seems to be a general negative correlation between ethnic fractionalization and press freedom (the higher the fractionalization, the lower the press freedom, in accordance with our theory) but there is also a clear dip around an ethnic fractionalization value of 0.30 (a 0.30 chance that any two individuals selected from a given society will belong to different ethnic groups). 
+
+````{r ggplots, include=FALSE, echo=FALSE}
+ggplot2::ggplot(CV10_Gini, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_smooth() + theme_bw() + 
+  ggtitle("Ethnic Fractionalization & Press Freedom 2010") +
+  xlab("Ethnic fractionalization") +
+  ylab("Press Freedom") + scale_y_reverse()
+
+````
+
+
+
+#Conclusion and Grounds for Further Analysis
+As previously mentioned, in order to truly be able to draw conclusive relationships between the variables at hand, a larger dataset spanning a much greater time period would be needed. Unfortunately, data on ethnic fractionalization going back large periods of time is difficult to come by, and we were not able to include it in this study.
+
+\newpage
+
+##Bibliography
+
+

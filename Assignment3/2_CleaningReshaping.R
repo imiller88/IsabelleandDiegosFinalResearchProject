@@ -82,7 +82,7 @@ QoGDatareduced$iso2c <- countrycode(QoGDatareduced$cname, origin = 'country.name
 #Serbia and Montenegro, Tibet not matched
 
 #rename variables - make sure dplyr is loaded (but not plyr)
-QoGDatareduced <- rename  (QoGDatareduced,
+QoGDatareduced <- dplyr::rename  (QoGDatareduced, #dplyr:: tells R to use that package
                 orgassfreedom = fh_aor,
                 pressfreedom = fh_fotpsc,
                 ethnicfrac = al_ethnic,

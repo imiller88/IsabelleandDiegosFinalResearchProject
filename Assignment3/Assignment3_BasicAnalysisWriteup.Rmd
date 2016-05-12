@@ -1,22 +1,190 @@
 ---
-title: "Assignment3_BasicAnalysisWriteup"
-author: "Diego Fernández Fernández and Isabelle Miller"
-date: "14 Apr 2016"
+title: "Third Pair Assignment"
+authors: "Diego Fernandez Fernandez and Isabelle Miller"
+date: "19 Apr 2016"
 output: pdf_document
+bibliography: Citations2.bib
 ---
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+#If not loading directly from the repository folder, the workspace can be replicated by running the
+#files DowloadCleanMergeFinal.R and DescriptiveStats.R from the same repository.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
-summary(cars)
+load("workspacefinal.RData")
+library("ggplot2")
+library("rworldmap")
+library("maptools")
+library("ggmap")
+library("sp")
+library("knitr")
+library("stargazer")
+library("plm")
+opts_chunk$set(tidy.opts=list(width.cutoff=60))
 ```
 
-You can also embed plots, for example:
 
-```{r, echo=FALSE}
-plot(cars)
+#Research Question
+Our Collaborative Research Paper aims at shedding some light on what the effects of ethnic fractionalization on Wolgang Merkel's conceptualization of political rights are. In this sense, we have two main hypotheses: 
+
+**H1: The more ethnically fractionalized a country is, the higher its negative impact on political rights if income inequality is high.**
+
+**H2: When income inequality is low, the impact of high ethnic fractionalization on political rights is expected to be positive.**
+
+For more information regarding the theoretical underpinnings of our research proposal, you can have a look at our second pair assignment, which can be found here: [Assignment 2](https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment2/Assignment2_ResearchProposal.Rmd)
+
+#Model
+Our aim is to collect data on level of political rights, ethnic fractionalization, and income inequality for all countries in the world during the period 2002-2014. We make use of Freedom House's freedom of the press indicator, drawn from the Quality of Governance dataset, as a proxy for political rights, our dependent variable (DV). Nevertheless, we also intend to make use of an organizational and associational freedom index as an alternative DV for a robustness check. 
+
+Our two main independent variables (IVs) of interest are ethnic fractionalization and income inequality (as an interaction variable). Other control variables that we include in our model are GDP per capita, judiciary independence, governmental accountability and linguistic fractionalization. Again, for more information concerning the theoretical reasons behind this model specification, please sese [Assignment 2](https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment2/Assignment2_ResearchProposal.Rmd)
+
+#Data sources
+The variables that we are collecting for this research project come from three different data sources: the [Quality of Government Standard Data](http://qog.pol.gu.se/data/datadownloads/qogstandarddata), the [World Development Indicators](http://data.worldbank.org/data-catalog/world-development-indicators) and the [Worldwide Governance Indicators](http://data.worldbank.org/data-catalog/worldwide-governance-indicators).
+
+\itemize{
+\item{Quality of Government (QoG) Standard Time-Series Data}{ - These are contained in the QoG Standard Time-Series Dataset, which includes data from 1946 to 2015, the unit of analysis being country-year. It compiles approximately 2500 variables, making it the largest dataset developed by the Quality of Government Institute at the University of Gothenburg, Sweden.}
+\item{World Development Indicators (WDI)}{ - These are a set of indicators developed by the World Bank, compiling important, high-quality, and internationally comparable statistics about global development and the fight against poverty. They are organized around six main themes, which are world view, people, environment, economy, states and markets, and global links.}
+\item{Worldwide Governance Indicators (WGI)}{ - These are also developed by the World Bank. They consist of six composite indicators that measure broad dimensions of governance, covering approximately 200 countries since 1996: Voice and Accountability, Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption. They are obtained from 31 different perception-based data sources, aiming at enabling meaningful cross-country comparisons over time.}
+}
+
+
+#Data gathering
+
+##Quality of Government data 
+
+To collect the data from the Quality of Government Standard Time-Series Dataset [@qog2015], we downloaded and imported the .csv file containing the data into R and dropped all variables but those we wish to include in our model for the period 2002-2014. These are freedom of the press and associational and organization freedom, both developed by Freedom House; indicators for ethnic and linguistic fractionalization [@Alesina2003]; and the World Economic Forum (WEF)'s judicial independence variable. 
+
+##World Development Indicators 
+
+Using the WDI Package for R, we were able to use the World Bank indicator codes to automatically download the variables that we are interested in from the World Bank's APIs. These are: the Gini coefficient, which meassures income inequality (World Bank code: SI.POV.GINI), and GDP per capita in current US dollars (World Bank code: NY.GDP.PCAP.CD) [@wdi]
+
+##Worldwide Governance Indicators 
+
+Unlike in the case of the WDI, there is no API. Therefore, we had to download and import the data into R from a zipped .csv file. Since we were only interested in the Voice and Accountability variable for the years 2002-2014, we dropped the other five variables (Political Stability and Absence of Violence/Terrorism, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption)  as well as the values that the variable Voice and Accountability takes for previous years (1996, 1998, 2000) [@Kaufmann2010]. 
+
+##Cleaning and merging
+After we downloaded the data and selected the variables that we want to include in our model, we cleaned and merged the QoG, WDI and WGI datasets. Our final dataset, [FinalDataset.csv](https://github.com/imiller88/IsabelleandDiegosFinalResearchProject/blob/master/Assignment3/FinalDataset.csv), has 2080 observations for 11 variables. 
+
+
+#Descriptive and Inferential Statistics
+
+##Descriptive Statistics
+To follow are some basic descriptive statistics examining our main variables of interest: Freedom of the Press (pressfreedom), Ethnic Fractionalization (ethnicfrac), and income inequality as measured by the Gini Coefficient (Ginicoef). 
+
+\newpage
+
+###Measures of central tendency
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+table1 <- summary(CombinedVars2[c(4,6,7)])
+kable(table1, align = 'c', digits = 2, 
+      caption = 'Measures of Central Tendency')
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+###Histograms
+In the following figures, the data has been subset into years to examine changes over time. We can see the distribution of countries by relative income inequality for the years 2005 and 2010. These statistics are difficult to interpret, since while we can assume that income inequality does not change so dramatically in most countries over the course of 5 years, the graphs appear drastically different due to the inconsistency of data available from year to year. In other words, these two charts show different sets of countries; therefore, no conclusion can be drawn as to change in income inequality on a global scale over time.
+
+\vspace{1cm}
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+qplot(Ginicoef, data=CV2005, geom="histogram") + geom_histogram(aes(fill = ..count..)) +
+  scale_x_reverse() +
+  labs(title="Distribution of Available Gini Coefficients for 2005", x="Coefficient", y="Frequency")
+```
+
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+qplot(Ginicoef, data=CV2010, geom="histogram") + geom_histogram(aes(fill = ..count..)) + 
+  scale_x_reverse() +
+  labs(title="Distribution of Available Gini Coefficients for 2010", x="Coefficient", y="Frequency")
+```
+
+\newpage
+
+###Boxplots
+In the figure below, we can see the general distribution of Freedom of Press Scores among the world's countries by year. While the mean score does seem to be slightly increasing over time, there also seems to be a subtle movement from the edges inwards; that is to say, both countries that are on the upper end and the lower end of the spectrum are moving slightly towards the center. It is difficult to detect any significant patterns beyond this, however. 
+
+\vspace{1cm}
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+ggplot(pressfreedomss, aes(x=year, y=pressfreedom)) + geom_boxplot(fill="lightblue") + 
+  labs(title="Distribution of Freedom of Press Scores by Year",x="Year", y = "Freedom Score")+
+  theme_classic()
+```
+
+\newpage
+
+###Maps
+When we inspect press freedom on a map, on the other hand, it is interesting to see how quickly it can fluctuate over time with shifts in political regimes, governments, and societal conditions. The difference here from country to country is much more drastic than one might guess based on the box plot above.
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+#2002
+sPDF <- joinCountryData2Map( CV2002
+                             ,joinCode = "ISO2"
+                             ,nameJoinColumn = "iso2c")
+
+#pressfreedom 2002
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Freedom 2002',
+               colourPalette = c("heat"),
+               catMethod = 'fixedWidth',
+               numCats = 8,
+               borderCol='black')
+```
+
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+#2014
+sPDF <- joinCountryData2Map( CV2014
+                             ,joinCode = "ISO2"
+                             ,nameJoinColumn = "iso2c")
+
+#pressfreedom 2014
+mapCountryData(sPDF, nameColumnToPlot='pressfreedom', mapTitle= 'Press Freedom 2014',
+               colourPalette = c("heat"),
+               catMethod = 'fixedWidth',
+               numCats = 8,
+               borderCol='black')
+```
+
+\newpage
+
+Since ethnic fractionalization tends to remain relatively steady over time, we have chosen to look at the most recently available statistics. We have categorized countries into bins of relative ethnic fractionalization, where green is a high probability that any two individuals randomly selected from the population be of different ethnicities, magenta is a low probability (implying high ethnic homogeneity), and blue and orange fall somewhere in the middle. It is interesting to see how the upper half of the scale - those countries in green and orange - and the lower half - blue and magenta - cluster in regions of the world. While we believe this may have implications for similar patterns in strength of political rights, at first glance we see no comparable pattern between this map and the previous ones. The fact that this remains relatively more constant over time than press freedom also suggest that there are likely other factors we need to take into account.
+
+\vspace{1cm}
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+
+#ethnicfrac 2014
+mapCountryData(sPDF, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization (2014)',
+               colourPalette = c("magenta", "blue", "darkorange", "green"),
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+```
+
+\newpage
+
+##Inferential Statistics
+Although the inferential part of our analysis is just being started, we have already run an OLS and a fixed-effects models (the table with the coefficients for both models is in the next page). On the one hand, based on our preliminary OLS regression results, a 1-percent-point-increase in level of ethnic fractionalization is predicted to decrease freedom of the press by 6.99 points (let´s remember that each country is given a total press freedom score ranging from 0, best, to 100, worst). As for income inequality, a 1-point increase in the Gini coefficient is predicted to lead to an increase of freedom of the press by 0.12. Thus, its effect does not appear to be very significant from a substantive standpoint. Nevertheless, the effect of both main predictors is highly statistically significant. Regarding our control variables, in spite of the fact that only the level of linguistic fractionalization of a country is not statistically significant, the voice and accountability variable clearly appears to be the most substantively significant, since a 1-point increase in the World Bank index is predicted to improve a country´s press freedom score by 23.35 points (thus, the press freedom score given to a country is expected to decrease by 23.35 points).
+
+On the other hand, based on our fixed-effects model, only income inequality, as measured by the Gini coefficient, and the World Bank´s voice and accountability variable appear to hold some explanatory power (statistically significant) when it comes to making sense of the differences in press freedom scores across countries and years. As in the OLS model, the effect of voice and accountability is the most prominent from a substantive standpoint (a 1-point increase in voice and accountability is expected to improve a country´s press freedom score by 12.52). Concerning our main IV, the level ethnic fractionalization, as well as the level of linguistic fractionalization variable, as they vary very little across time (they are nearly time-invariant), both of them drop out when running a fixed-effects model.
+
+##Next steps
+As we have just shown, nearly time-invariant independent variables, such as a country´s level of ethnic fractionalization, get eaten up by the country-specific time-invariant fixed effects. To deal with this, there are three potential ways forward: pooled OLS, random-effects or a Hausman-Taylor formulation. In this sense, we are planning to perform the three models and compare coefficients across them. Moreover, we are intending to include an interaction term between ethnic fractionalization and income inequality in our next regressions, which we have not done so far. 
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
+
+#setting data as panel data
+CombinedVars2 <- plm.data(CombinedVars2, index=c("cname", "year"))
+#OLS regression
+M1 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2, model="pooling", index=c("cname", "year"))
+#Fixed effects
+M2 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2, model="within", index=c("cname", "year"))
+
+labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "GDP per capita", "Voice and Accountability", "Judicial Independence", "Linguistic Fractionalization", ("Intercept"))
+label_DV <- c("Freedom of the press")
+
+stargazer::stargazer(M1, M2, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Pooled OLS (1) and Fixed Effects (3)", digits = 2, type = "latex", header = FALSE)
+
+```
+
+\newpage
+
+##Bibliography
