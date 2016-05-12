@@ -128,6 +128,8 @@ ggplot2::ggplot(CombinedVars2, aes(ethnicfrac, pressfreedom)) + geom_point() + g
 #setting data as panel data
 CombinedVars2 <- plm.data(CombinedVars2, index=c("cname", "year"))
 #OLS regression
-M1 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2, model="pooling", index=c("cname", "year"))
+M1 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + 
+            judindep + langfrac , data = CombinedVars2, model="pooling", index=c("cname", "year"))
 #Fixed effects
-M2 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + judindep + langfrac , data = CombinedVars2, model="within", index=c("cname", "year"))
+M2 <- plm(pressfreedom ~ ethnicfrac + Ginicoef + GDPpercapita + VoiceandAccountability + 
+            judindep + langfrac , data = CombinedVars2, model="within", index=c("cname", "year"))
