@@ -1,3 +1,6 @@
+getwd
+try(setwd("/Users/Diegotab/GitHub/IsabelleandDiegosFinalResearchProject/FinalPaper"), silent = TRUE)
+try(setwd("/Users/isabellemiller/GitHub/IsabelleandDiegosFinalResearchProject/FinalPaper"), silent =TRUE)
 load("workspacefinal.RData")
 
 library("ggmap")
@@ -19,6 +22,7 @@ any(is.na(CombinedVars2$Ginicoef))
 #returns the number of NAs in the vector
 sum(is.na(CombinedVars2$Ginicoef))
 
+CV2008 <- subset(CombinedVars2, year == 2008)
 
 #check for NAs
 sum(is.na(CV2002$Ginicoef)) #160 NA
@@ -209,7 +213,7 @@ OLS08_nogini <- plm(pressfreedom ~ ethnicfrac + GDPpercapita + langfrac + judind
 summary(OLS08_nogini)
 vif(OLS08_nogini) #here remarkably low VIF, including with langfrac - interesting
 
-OLS08quad <- plm(pressfreedom ~ ethnicfrac^2 + GDPpercapita + langfrac + judindep,
+OLS08quad <- plm(pressfreedom ~ ethnicfrac + I(ethnicfrac^2) + GDPpercapita + langfrac + judindep,
                 data = CV2008, model="pooling", index=c("cname"))
 summary(OLS08quad)
 
@@ -217,23 +221,14 @@ OLS08quad <- plm(pressfreedom ~ ethnicfrac^2 + GDPpercapita + langfrac + judinde
                  data = CV2008, model="pooling", index=c("cname"))
 summary(OLS08quad)
 
-#a bunch of random crap - feel free to delete
-plot(CV2008)
-lines(CV2008,predict(OLS08quad,CV2008)
-lines(xvec,predict(lm2,data.frame(x=xvec)))
 
-plot(CV08_Gini$pressfreedom, CV08_Gini$ethnicfrac, ylim=c(0,1))
-plot(CV08_Gini$ethnicfrac, ylim=c(0,1))
-plot(CV08_Gini$ethnicfrac^2, ylim=c(0,1))
-plot(CV08_Gini$Ginicoef,ylim=c(20,80))
-
-
-#end of random crap
 
 
 #unsuccessful attempt at fixed effects
-FE08_10 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + 
-                 langfrac + judindep, data = CV2005, model="within", index=c("cname", "year"))
+FD08_10 <-plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, 
+              data = CV08_10, model="fd", index=c("cname")) 
+summary(FD08_10)
 
-
+FD08_10_2 <-plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, 
+                data = CV08_10, model="fd", index=c("cname")) 
 
