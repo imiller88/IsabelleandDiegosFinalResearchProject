@@ -109,83 +109,14 @@ Our basic equation (from the pooled OLS model) will be as follows:
 
 Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, we also attempt a first difference model using these same two years (2008 and 2010); however, taking into account that the data used for ethnic fractionalization is constant over the 13-year period for which we collected the data, it would also only indicate the effects of changes in inequality, which is in most cases negligible over a two year period.
 
-##*Limitations*
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
-
-iso08 <- joinCountryData2Map( CV08_Gini
-                             ,joinCode = "ISO2"
-                             ,nameJoinColumn = "iso2c")
-
-mapCountryData(iso08, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (After)',
-               colourPalette = c("light green", "green", "dark green", "black"),
-               oceanCol = 'lightblue',
-               missingCountryCol='white',
-               addLegend = FALSE,
-               catMethod = 'fixedWidth',
-               numCats = 4,
-               borderCol='black')
-````
-
-
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
-
-iso08_nogini <- joinCountryData2Map( CV2008
-                                     ,joinCode = "ISO2"
-                                     ,nameJoinColumn = "iso2c")
-
-mapCountryData(iso08_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (Before)',
-               colourPalette = c("light green", "green", "dark green", "black"),
-               oceanCol = 'lightblue',
-               missingCountryCol='white',
-               addLegend = FALSE,
-               catMethod = 'fixedWidth',
-               numCats = 4,
-               borderCol='black')
-````
-
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
-
-iso10 <- joinCountryData2Map( CV10_Gini
-                              ,joinCode = "ISO2"
-                              ,nameJoinColumn = "iso2c")
-
-mapCountryData(iso10, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (After)',
-               colourPalette = c("light green", "green", "dark green", "black"),
-               oceanCol = 'lightblue',
-               missingCountryCol='white',
-               addLegend = FALSE,
-               catMethod = 'fixedWidth',
-               numCats = 4,
-               borderCol='black')
-````
-
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
-
-iso10_nogini <- joinCountryData2Map( CV2010
-                                     ,joinCode = "ISO2"
-                                     ,nameJoinColumn = "iso2c")
-
-mapCountryData(iso10_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (Before)',
-               colourPalette = c("light green", "green", "dark green", "black"),
-               oceanCol = 'lightblue',
-               missingCountryCol='white',
-               addLegend = FALSE,
-               catMethod = 'fixedWidth',
-               numCats = 4,
-               borderCol='black')
-
-````
-
-\vspace{1cm}
+##*Limitations in the sample*
 After thoroughly cleaning the data of all unavailable data points, we were left with an n of 65 for 2008 and 67 for 2010. As seen in the images above, most African countries, smaller island nations, and all of South Asia have unfortunately been dropped from this sample due to lack of available Gini data; this means that, while there are some developing countries in Asia and Latin America included in the sample, it is disproportionately skewed towards Western and OECD countries. Therefore, we also include regression results run for the larger sample excluding the interacting variable (Gini coefficient).
 
 Additionally, this study is not able to show real change over time, as, although we do run a first difference panel data model, the variables in question do not vary significantly over such short periods of time. In order to be able to draw firmer conclusions, it would be ideal to run a panel data model over the course of at least 20-100 years to allow for changes in ethnic fractionalization and inequality to take place due to migration, economic cycles, regime changes, and/or various other mitigating factors. 
 
 
-
 #Data Exploration
-
-Before jumping right into our analysis, we first inspected the variables for any significant patterns. Given negligible change between the two years at hand, our descriptive analysis will focus on 2010, the most recently available year. Unless otherwise mentioned, the visuals shown here represent the subset dataset of countries for which a Gini coefficient for the year 2010 were available (please refer to the map above for an idea of which countries this includes).
+Before jumping right into our inferential analysis, we first made use of some descriptive statistics to inspect the variables for any significant patterns. Given negligible change between the two years at hand, our descriptive analysis will focus on 2010, the most recently available year. Unless otherwise mentioned, the visuals shown here represent the subset dataset of countries for which a Gini coefficient for the year 2010 were available.
 
 Below please see some simple descriptive distributions of the main variables of interest. We must take care to take the skewness of our independent variables into account when running OLS regressions.
 
@@ -207,7 +138,7 @@ gini10hist
 
 \newpage
 
-When looking at correlations between ethnic fractionalization and press freedom, we can see an interesting shift when ethnic freedom is interacted with inequality. There seems to be a general negative correlation between ethnic fractionalization and press freedom (the higher the fractionalization, the lower the press freedom, in accordance with our theory) but there is also a clear dip around an ethnic fractionalization value of 0.30 (a 0.30 chance that any two individuals selected from a given society will belong to different ethnic groups). 
+When looking at correlations between ethnic fractionalization and press freedom, there seems to be a general negative correlation between both variables (the higher the fractionalization, the lower the press freedom, in accordance with our theory) but there is also a clear dip around an ethnic fractionalization value of 0.30 (a 0.30 chance that any two individuals selected from a given society will belong to different ethnic groups). 
 
 ````{r ggplots, echo=FALSE, error=FALSE, message=FALSE}
 ggplot2::ggplot(CV10_Gini, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_smooth() + theme_bw() + 
@@ -217,7 +148,40 @@ ggplot2::ggplot(CV10_Gini, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_
 
 ````
 
+#OLS regression
 
+When it comes to the inferential part of our analysis, its core is constituted by two OLS regressions with the chosen model specification for the years 2008 and 2010, for which we are able to collect the most complete data, as we have already said before. However, we also run OLS regressions for those two years without including the Gini coefficient in our model (due to the fact that when we include the Gini coefficient in our model, many countries drop from our sample since there are not data available for them), using organizational freedom as (alternative) dependent variable, including a quadratic term (ethnic fractionalization squared), or including the log of ethnic fractionalization, due to the skewdness of the variable. Below you can find separate tables for the estimate coefficients obtained from our different model specifications for each of the two years that we are analyzing. 
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
+
+#setting data as panel data
+CV08_10 <- plm.data(CV08_10, index=c("cname", "year"))
+
+OLS08 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV08_Gini, model="pooling", index=c("cname"))
+
+OLS10 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV10_Gini, model="pooling", index=c("cname"))
+
+labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "GDP per capita", "Linguistic Fractionalization", "Judicial Independence", ("Intercept"))
+label_DV <- c("Freedom of the press")
+
+stargazer::stargazer(OLS08, OLS10, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE)
+
+```
+
+##Year 2010
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
+OLS10 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, 
+               data = CV10_Gini, model="pooling", index=c("cname"))
+
+OLS10_nogini <- plm(pressfreedom ~ ethnicfrac + GDPpercapita + langfrac + judindep, data = CV2010, model="pooling", index=c("cname"))
+
+OLS10_org <- plm(orgassfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV10_Gini, model="pooling", index=c("cname"))
+
+OLS10_log <- plm(pressfreedom ~ log(ethnicfrac) + GDPpercapita + langfrac + judindep, data = CV2010, model="pooling", index=c("cname"))
+
+OLS10quad <- plm(pressfreedom ~ ethnicfrac + I(ethnicfrac^2) + GDPpercapita + langfrac + judindep,data = CV2010, model="pooling", index=c("cname"))
+
+```
 
 #Conclusion and Grounds for Further Analysis
 As previously mentioned, in order to truly be able to draw conclusive relationships between the variables at hand, a larger dataset spanning a much greater time period would be needed. Unfortunately, data on ethnic fractionalization going back large periods of time is difficult to come by, and we were not able to include it in this study.
