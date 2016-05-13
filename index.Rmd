@@ -121,56 +121,25 @@ ggplot2::ggplot(CV10_Gini, aes(ethnicfrac, pressfreedom)) + geom_point() + geom_
 
 When it comes to the inferential part of our analysis, its core is constituted by two OLS regressions with the chosen model specification for the years 2008 and 2010, for which we are able to collect the most complete data, as we have already said before. However, we also run OLS regressions for those two years without including the Gini coefficient in our model (due to the fact that when we include the Gini coefficient in our model, many countries drop from our sample since there are not data available for them), and using organizational freedom as (alternative) dependent variable. Below you can find separate tables for the estimate coefficients obtained from our different model specifications for each of the two years that we are analyzing. We also run a first difference model for the years 2008 and 2010, and 1-year OLS models with the quadratic term as well as the log of ethnic fractionalization. Nevertheless, due to the insignificance of the estimate coefficients obtained, and for the sake of clearness, we decided not to include them in this final paper. 
 
-\newpage
-
-##With Gini
 ```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
 
 #setting data as panel data
 CV08_10 <- plm.data(CV08_10, index=c("cname", "year"))
 
-OLS08 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV08_Gini, model="pooling", index=c("cname"))
+OLS08 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV10_Gini, model="pooling", index=c("cname"))
 
 OLS10 <- plm(pressfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV10_Gini, model="pooling", index=c("cname"))
 
-labels_IVs <- c("Ethnic Fractionalization", "Gini coefficient", "GDP per capita", "Linguistic Fractionalization", "Judicial Independence", ("Intercept"))
+labels_IVs <- c("Ethnic Fractionalization", "GDP per capita", "Linguistic Fractionalization", "Judicial Independence", ("Intercept"))
+
 label_DV <- c("Freedom of the press")
 
-stargazer::stargazer(OLS08, OLS10, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE)
+stargazer::stargazer(OLS08, OLS10, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "html", header = FALSE)
+
 
 ```
 
-\newpage
 
-##Without Gini
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
-
-OLS08_nogini <- plm(pressfreedom ~ ethnicfrac + GDPpercapita + langfrac + judindep, data = CV2008, model="pooling", index=c("cname"))
-
-OLS10_nogini <- plm(pressfreedom ~ ethnicfrac + GDPpercapita + langfrac + judindep, data = CV2010, model="pooling", index=c("cname"))
-
-labels_IVs <- c("Ethnic Fractionalization", "GDP per capita", "Linguistic Fractionalization", "Judicial Independence", ("Intercept"))
-label_DV <- c("Freedom of the press")
-
-stargazer::stargazer(OLS08_nogini, OLS10_nogini, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE)
-```
-
-\newpage
-
-##With organizational freedom, alternative DV
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results="asis"}
-
-OLS08_org <- plm(orgassfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV08_Gini, model="pooling", index=c("cname"))
-
-OLS10_org <- plm(orgassfreedom ~ ethnicfrac * Ginicoef + GDPpercapita + langfrac + judindep, data = CV10_Gini, model="pooling", index=c("cname"))
-
-labels_IVs <- c("Ethnic Fractionalization", "GDP per capita", "Linguistic Fractionalization", "Judicial Independence", ("Intercept"))
-label_DV <- c("Organizational Freedom")
-
-stargazer::stargazer(OLS08_org, OLS10_org, dep.var.labels=label_DV, covariate.labels = labels_IVs, title = "Regression Results: Year 2008 (1) and Year 2010 (2)", digits = 2, type = "latex", header = FALSE)
-```
-
-\newpage
 
 #Conclusion and Grounds for Further Analysis
 As previously mentioned, in order to truly be able to draw conclusive relationships between the variables at hand, a larger dataset spanning a much greater time period would be needed. Unfortunately, data on ethnic fractionalization going back large periods of time is difficult to come by, and we were not able to include it in this study.
