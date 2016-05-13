@@ -8,6 +8,9 @@ bibliography: CitationsFinal.bib
 
 ````{r setup, include=FALSE}
 #load prepared data
+getwd
+try(setwd("/Users/Diegotab/GitHub/IsabelleandDiegosFinalResearchProject/FinalPaper"), silent = TRUE)
+try(setwd("/Users/isabellemiller/GitHub/IsabelleandDiegosFinalResearchProject/FinalPaper"), silent =TRUE)
 load("workspacefinal.RData")
 
 #call packages
@@ -107,33 +110,11 @@ Our basic equation (from the pooled OLS model) will be as follows:
 Since we are not only interested in looking at the difference between the units (in our case, countries) but also want to take into account the within-unit variance, we also attempt a first difference model using these same two years (2008 and 2010); however, taking into account that the data used for ethnic fractionalization is constant over the 13-year period for which we collected the data, it would also only indicate the effects of changes in inequality, which is in most cases negligible over a two year period.
 
 ##*Limitations*
-````{r map setup, include=FALSE}
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+
 iso08 <- joinCountryData2Map( CV08_Gini
                              ,joinCode = "ISO2"
                              ,nameJoinColumn = "iso2c")
-
-iso08_nogini <- joinCountryData2Map( CV2008
-                                     ,joinCode = "ISO2"
-                                     ,nameJoinColumn = "iso2c")
-
-iso10 <- joinCountryData2Map( CV10_Gini
-                              ,joinCode = "ISO2"
-                              ,nameJoinColumn = "iso2c")
-
-iso10_nogini <- joinCountryData2Map( CV2010
-                                     ,joinCode = "ISO2"
-                                     ,nameJoinColumn = "iso2c")
-````
-
-````{r maps, echo=FALSE, tidy=TRUE}
-mapCountryData(iso08_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (Before)',
-               colourPalette = c("light green", "green", "dark green", "black"),
-               oceanCol = 'lightblue',
-               missingCountryCol='white',
-               addLegend = FALSE,
-               catMethod = 'fixedWidth',
-               numCats = 4,
-               borderCol='black')
 
 mapCountryData(iso08, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (After)',
                colourPalette = c("light green", "green", "dark green", "black"),
@@ -143,12 +124,16 @@ mapCountryData(iso08, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractiona
                catMethod = 'fixedWidth',
                numCats = 4,
                borderCol='black')
+````
 
 
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
 
+iso08_nogini <- joinCountryData2Map( CV2008
+                                     ,joinCode = "ISO2"
+                                     ,nameJoinColumn = "iso2c")
 
-#ethnic fractionalization 2010
-mapCountryData(iso10_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (Before)',
+mapCountryData(iso08_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2008 (Before)',
                colourPalette = c("light green", "green", "dark green", "black"),
                oceanCol = 'lightblue',
                missingCountryCol='white',
@@ -156,6 +141,13 @@ mapCountryData(iso10_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fr
                catMethod = 'fixedWidth',
                numCats = 4,
                borderCol='black')
+````
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+
+iso10 <- joinCountryData2Map( CV10_Gini
+                              ,joinCode = "ISO2"
+                              ,nameJoinColumn = "iso2c")
 
 mapCountryData(iso10, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (After)',
                colourPalette = c("light green", "green", "dark green", "black"),
@@ -167,6 +159,24 @@ mapCountryData(iso10, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractiona
                borderCol='black')
 ````
 
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+
+iso10_nogini <- joinCountryData2Map( CV2010
+                                     ,joinCode = "ISO2"
+                                     ,nameJoinColumn = "iso2c")
+
+mapCountryData(iso10_nogini, nameColumnToPlot='ethnicfrac', mapTitle= 'Ethnic Fractionalization 2010 (Before)',
+               colourPalette = c("light green", "green", "dark green", "black"),
+               oceanCol = 'lightblue',
+               missingCountryCol='white',
+               addLegend = FALSE,
+               catMethod = 'fixedWidth',
+               numCats = 4,
+               borderCol='black')
+
+````
+
+\vspace{1cm}
 After thoroughly cleaning the data of all unavailable data points, we were left with an n of 65 for 2008 and 67 for 2010. As seen in the images above, most African countries, smaller island nations, and all of South Asia have unfortunately been dropped from this sample due to lack of available Gini data; this means that, while there are some developing countries in Asia and Latin America included in the sample, it is disproportionately skewed towards Western and OECD countries. Therefore, we also include regression results run for the larger sample excluding the interacting variable (Gini coefficient).
 
 Additionally, this study is not able to show real change over time, as, although we do run a first difference panel data model, the variables in question do not vary significantly over such short periods of time. In order to be able to draw firmer conclusions, it would be ideal to run a panel data model over the course of at least 20-100 years to allow for changes in ethnic fractionalization and inequality to take place due to migration, economic cycles, regime changes, and/or various other mitigating factors. 
@@ -194,6 +204,8 @@ ethnicfrac10hist
 gini10hist <- qplot(Ginicoef, data=CV10_Gini, geom="histogram") + geom_histogram(aes(fill = ..count..)) + labs(title="Distribution of Available Gini Coefficients for 2010", x="Inequality (low to high)", y="Frequency")
 gini10hist
 ````
+
+\newpage
 
 When looking at correlations between ethnic fractionalization and press freedom, we can see an interesting shift when ethnic freedom is interacted with inequality. There seems to be a general negative correlation between ethnic fractionalization and press freedom (the higher the fractionalization, the lower the press freedom, in accordance with our theory) but there is also a clear dip around an ethnic fractionalization value of 0.30 (a 0.30 chance that any two individuals selected from a given society will belong to different ethnic groups). 
 
