@@ -8,9 +8,6 @@ bibliography: CitationsFinal.bib
 
 
 ````{r setup, include=FALSE}
-getwd
-try(setwd("/Users/Diegotab/GitHub/IsabelleandDiegosFinalResearchProject/FinalPaper"), silent = TRUE)
-try(setwd("/Users/isabellemiller/GitHub/IsabelleandDiegosFinalResearchProject/FinalPaper"), silent =TRUE)
 load("workspacefinal.RData")
 
 #call packages
